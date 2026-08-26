@@ -1,0 +1,23 @@
+# Node dependencies
+node_modules/
+
+# Eleventy build output
+_site/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Heavy raw images (uploaded to CDN)
+src/images/products/
+
+# OS Files
+.DS_Store
+Thumbs.db

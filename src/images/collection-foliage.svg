@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8f5e9"/><stop offset="55%" stop-color="#81c784"/><stop offset="100%" stop-color="#43a047"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <g opacity="0.25">
+    <ellipse cx="680" cy="90" rx="140" ry="60" fill="#2e7d32"/>
+    <ellipse cx="120" cy="420" rx="180" ry="70" fill="#2e7d32"/>
+  </g>
+  <g transform="translate(400,240)" text-anchor="middle">
+    <text y="-30" font-size="110">🌿</text>
+    <text y="70" font-size="46" font-family="Georgia, serif" font-weight="bold" fill="#1b5e20">FOLIAGE PLANTS</text>
+  </g>
+</svg>

@@ -1,0 +1,86 @@
+---
+layout: base
+title: Shop All Artificial Plants & Trees | Sango Fiora
+description: Browse the complete Sango Fiora catalogue — foliage, resort palms, statement trees and flowering plants with decorative pots included, delivered across India.
+permalink: /products/
+---
+
+<main class="bg-background min-h-screen pb-20 pt-[80px]">
+  
+  <!-- Premium Hero Banner -->
+  <section class="relative bg-deep-forest text-on-primary py-16 md:py-20 overflow-hidden border-b border-amber-gold/20">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-bold text-amber-gold uppercase tracking-widest mb-3">
+          <span>🌿 Handcrafted Collection</span>
+          <span>·</span>
+          <span>Pot Included</span>
+        </div>
+        <h1 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight">Shop All Collection</h1>
+        <p class="text-white/80 text-sm sm:text-base mt-2 max-w-xl">Explore <span id="product-count" class="font-bold text-amber-gold">{{ plants.products.length }}</span> lifelike artificial plants handpicked for structure, vibrant greens, and maintenance-free luxury.</p>
+      </div>
+
+      <!-- Quick Search inside catalog -->
+      <div class="w-full md:w-80">
+        <div class="relative">
+          <input type="text" id="catalog-search" placeholder="Search plants by name..."
+            class="w-full bg-white/10 border border-white/20 rounded-2xl py-3 pl-11 pr-4 text-xs text-white placeholder-white/50 focus:outline-none focus:bg-white focus:text-deep-forest focus:placeholder-gray-400 transition-all shadow-inner">
+          <span class="material-symbols-outlined absolute left-3.5 top-3 text-white/60 pointer-events-none text-base">search</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Filter & Sorting Toolbar -->
+  <section class="sticky top-[80px] z-30 bg-white/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-3 flex flex-wrap gap-4 items-center justify-between">
+      
+      <!-- Category Filter Chips -->
+      <div class="flex gap-2.5 overflow-x-auto py-1 items-center no-scrollbar max-w-full" id="catalog-chips-wrap">
+        <button type="button" data-filter="all" class="catalog-chip shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-amber-gold text-deep-forest transition-all shadow-sm">
+          All Products ({{ plants.products.length }})
+        </button>
+        {% for c in plants.collectionsList %}
+        <button type="button" data-filter="{{ c.title }}" class="catalog-chip shrink-0 px-4 py-2 rounded-full text-xs font-semibold bg-gray-100 border border-gray-200 hover:border-deep-forest text-gray-700 transition-all">
+          {{ c.title }} ({{ c.count }})
+        </button>
+        {% endfor %}
+      </div>
+
+      <!-- Sorting Select -->
+      <div class="flex items-center gap-2 shrink-0">
+        <label for="catalog-sort" class="text-xs text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Sort By:</label>
+        <select id="catalog-sort" class="text-xs font-bold border border-gray-200 rounded-full px-4 py-2 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-deep-forest shadow-sm">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="discount">Biggest Discount</option>
+          <option value="name">Name (A-Z)</option>
+        </select>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-10">
+    <div id="all-products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      {% for p in plants.products %}
+        {% include 'partials/product-card.html' %}
+      {% endfor %}
+    </div>
+
+    <!-- Empty State if filters yield 0 -->
+    <div id="no-results" class="hidden text-center py-20 bg-white rounded-3xl border border-outline-variant/30 mt-6 shadow-sm">
+      <div class="text-6xl mb-4">🌿</div>
+      <h3 class="font-headline-sm font-bold text-xl text-deep-forest mb-2">No matching products found</h3>
+      <p class="text-on-surface-variant text-sm mb-6">Try clearing your search query or selecting a different category filter.</p>
+      <button type="button" id="reset-filters" class="bg-amber-gold hover:bg-amber-400 text-deep-forest px-8 py-3 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+        Reset All Filters
+      </button>
+    </div>
+  </section>
+
+</main>

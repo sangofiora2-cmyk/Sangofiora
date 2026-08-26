@@ -1,0 +1,280 @@
+---
+title: Product
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product.name }} ({{ product.size }}) | Sango Fiora</title>
+  <meta name="description" content="Buy {{ product.name }} {{ product.size }} online in India. Pot included. ₹{{ product.price }} with free delivery over ₹999. Handcrafted from Sango Fiora.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+  {% include 'partials/header.html' %}
+
+  {% set related = plants.products | related(product.category, product.slug) %}
+
+  <main class="min-h-screen pb-16 pt-[80px]">
+    <!-- Breadcrumbs -->
+    <div class="bg-surface border-b border-outline-variant/30 py-3.5">
+      <nav class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop text-xs font-label-md text-on-surface-variant flex items-center gap-2" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-deep-forest transition-colors">Home</a>
+        <span class="text-outline-variant">›</span>
+        <a href="/products/" class="hover:text-deep-forest transition-colors">Shop All</a>
+        <span class="text-outline-variant">›</span>
+        <a href="/collections/{{ product.category | lower }}/" class="hover:text-deep-forest transition-colors">{{ product.category }}</a>
+        <span class="text-outline-variant">›</span>
+        <span class="text-deep-forest font-bold truncate">{{ product.name }}</span>
+      </nav>
+    </div>
+
+    <!-- Main Product Detail -->
+    <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+      <!-- Product Media View -->
+      <div class="lg:col-span-6 space-y-4">
+        <div class="relative rounded-3xl overflow-hidden bg-white border border-outline-variant/30 aspect-square shadow-sm group">
+          <img src="{{ product.image }}" alt="{{ product.name }} {{ product.size }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          
+          {% if product.discount %}
+          <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md font-label-sm">SAVE {{ product.discount }}%</span>
+          {% endif %}
+
+          <button type="button" aria-label="Add to wishlist"
+            data-wishlist-btn data-slug="{{ product.slug }}" data-name="{{ product.name }}"
+            data-category="{{ product.category }}" data-size="{{ product.size }}"
+            data-price="{{ product.price }}" data-mrp="{{ product.mrp }}" data-image="{{ product.image }}"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-outline-variant/30 flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-md z-10">
+            <span class="material-symbols-outlined text-pink-600">favorite</span>
+          </button>
+          
+          <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur border border-white/40 p-3 rounded-2xl flex items-center justify-between text-xs text-on-surface-variant shadow-sm font-label-sm">
+            <span class="font-bold text-deep-forest">✨ Handcrafted Quality</span>
+            <span>Pot &amp; Base Included</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Information Sidebar -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="bg-white rounded-3xl border border-outline-variant/30 p-6 md:p-8 shadow-sm space-y-6">
+          <div>
+            <div class="inline-block text-xs font-bold uppercase tracking-widest text-deep-forest bg-surface-container-high px-3.5 py-1 rounded-full mb-3 font-label-sm">
+              {{ product.category }}{% if product.variant %} · {{ product.variant }}{% endif %}
+            </div>
+            <h1 class="font-headline-lg text-3xl sm:text-headline-lg text-deep-forest leading-tight">{{ product.name }}</h1>
+            
+            <div class="flex items-center gap-3 mt-3">
+              <div class="flex items-center gap-1 bg-amber-gold/15 px-3 py-1 rounded-lg border border-amber-gold/30">
+                <span class="text-amber-600 text-xs font-bold">★ {{ product.rating }}</span>
+              </div>
+              <span class="text-xs text-on-surface-variant font-medium">{{ product.reviews }} verified buyer reviews</span>
+            </div>
+          </div>
+
+          <!-- Price Block -->
+          <div class="border-y border-outline-variant/30 py-4">
+            <div class="flex items-baseline gap-3">
+              <span class="text-3xl sm:text-4xl font-bold text-deep-forest font-headline-lg">₹{{ product.price }}</span>
+              {% if product.mrp > product.price %}
+              <span class="text-lg text-gray-400 line-through">₹{{ product.mrp }}</span>
+              <span class="bg-red-50 text-red-600 border border-red-200 text-xs font-bold px-2.5 py-1 rounded-lg font-label-sm">Save ₹{{ product.mrp - product.price }}</span>
+              {% endif %}
+            </div>
+            <p class="text-xs text-on-surface-variant/80 mt-1">Inclusive of all taxes · Pot &amp; base included</p>
+          </div>
+
+          <!-- Quick Spec Badges -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-surface-container-low border border-outline-variant/30 rounded-2xl p-3 text-center">
+              <p class="text-xs text-on-surface-variant mb-0.5">Approx. Height</p>
+              <p class="font-bold text-deep-forest text-sm">~{{ product.size }}</p>
+            </div>
+            <div class="bg-surface-container-low border border-outline-variant/30 rounded-2xl p-3 text-center">
+              <p class="text-xs text-on-surface-variant mb-0.5">Pot Included</p>
+              <p class="font-bold text-deep-forest text-sm">Ready Display</p>
+            </div>
+            <div class="bg-surface-container-low border border-outline-variant/30 rounded-2xl p-3 text-center">
+              <p class="text-xs text-on-surface-variant mb-0.5">Dispatch</p>
+              <p class="font-bold text-deep-forest text-sm">Within 24 Hrs</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons (Add to Cart & Direct Buy Now) -->
+          <div class="space-y-3 pt-2">
+            <div class="flex items-center gap-3">
+              <div class="flex items-center border border-outline-variant/50 rounded-2xl overflow-hidden bg-surface-container-high">
+                <button type="button" id="pdp-minus" class="w-11 h-12 hover:bg-white text-xl font-bold text-deep-forest transition-colors" aria-label="Decrease quantity">−</button>
+                <input type="number" id="pdp-qty" value="1" min="1" max="20"
+                  class="w-14 h-12 text-center font-bold text-gray-900 bg-transparent border-x border-outline-variant/50 focus:outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none">
+                <button type="button" id="pdp-plus" class="w-11 h-12 hover:bg-white text-xl font-bold text-deep-forest transition-colors" aria-label="Increase quantity">+</button>
+              </div>
+
+              <button type="button"
+                data-add-to-cart data-slug="{{ product.slug }}" data-name="{{ product.name }}"
+                data-variant="{{ product.variant }}" data-category="{{ product.category }}"
+                data-size="{{ product.size }}" data-price="{{ product.price }}" data-mrp="{{ product.mrp }}"
+                data-image="{{ product.image }}"
+                class="btn-animated flex-1 bg-deep-forest hover:bg-primary-container text-white px-6 py-4 rounded-2xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                <span>🛍️</span> Add to Cart
+              </button>
+            </div>
+
+            <!-- Direct Buy Now Button -->
+            <button type="button"
+              data-buy-now data-slug="{{ product.slug }}" data-name="{{ product.name }}"
+              data-variant="{{ product.variant }}" data-category="{{ product.category }}"
+              data-size="{{ product.size }}" data-price="{{ product.price }}" data-mrp="{{ product.mrp }}"
+              data-image="{{ product.image }}"
+              class="btn-animated w-full bg-amber-gold hover:bg-amber-400 text-deep-forest px-8 py-4 rounded-2xl font-bold text-base shadow-lg shadow-amber-gold/20 flex items-center justify-center gap-2">
+              <span>⚡</span> Buy Now &amp; Checkout
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="grid grid-cols-3 gap-2 pt-3 border-t border-outline-variant/30 text-center">
+            <div class="p-2"><p class="text-xl mb-0.5">🔒</p><p class="text-[10px] font-bold text-on-surface-variant">Razorpay Secured</p></div>
+            <div class="p-2"><p class="text-xl mb-0.5">🌱</p><p class="text-[10px] font-bold text-on-surface-variant">Quality Guarantee</p></div>
+            <div class="p-2"><p class="text-xl mb-0.5">🧑‍🌾</p><p class="text-[10px] font-bold text-on-surface-variant">Styling Support</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Structured Tabs (Overview, Styling Tips, Shipping) -->
+    <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-6">
+      <div class="bg-white rounded-3xl border border-outline-variant/30 p-6 md:p-8 shadow-sm">
+        <div class="flex border-b border-outline-variant/30 gap-6 mb-6">
+          <button type="button" data-tab="overview" class="pdp-tab active text-base font-bold text-deep-forest border-b-2 border-amber-gold pb-3 transition-all">
+            🌿 Product Overview
+          </button>
+          <button type="button" data-tab="care" class="pdp-tab text-base font-medium text-on-surface-variant border-b-2 border-transparent pb-3 hover:text-deep-forest transition-all">
+            ✨ Styling Tips
+          </button>
+          <button type="button" data-tab="shipping" class="pdp-tab text-base font-medium text-on-surface-variant border-b-2 border-transparent pb-3 hover:text-deep-forest transition-all">
+            📦 Packaging &amp; Delivery
+          </button>
+        </div>
+
+        <div id="tab-overview" class="pdp-tab-content space-y-4 text-on-surface-variant text-sm sm:text-base leading-relaxed font-body-md">
+          <p>
+            The <strong>{{ product.name }}</strong> stands approximately <strong>{{ product.size }}</strong> tall and arrives with a premium decorative pot, ready to enhance your home, office, or salon straight out of the box.
+          </p>
+          <p>
+            Each piece is meticulously handcrafted with premium materials and undergoes a 5-point quality inspection before dispatch to ensure lifelike detail, vibrant color, and lasting beauty.
+          </p>
+        </div>
+
+        <div id="tab-care" class="pdp-tab-content hidden space-y-4 text-on-surface-variant text-sm sm:text-base font-body-md">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+              <h4 class="font-bold text-deep-forest text-sm mb-1">☀️ Placement Tips</h4>
+              <p class="text-xs text-on-surface-variant/80">Place in any room — no sunlight needed. Avoid direct harsh sunlight to preserve color vibrancy over time.</p>
+            </div>
+            <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+              <h4 class="font-bold text-deep-forest text-sm mb-1">🧹 Cleaning</h4>
+              <p class="text-xs text-on-surface-variant/80">Gently dust with a soft cloth or use a low-pressure air blower. Wipe leaves with a damp cloth for a fresh look.</p>
+            </div>
+            <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+              <h4 class="font-bold text-deep-forest text-sm mb-1">🎨 Styling Ideas</h4>
+              <p class="text-xs text-on-surface-variant/80">Pair with decorative pebbles, macramé holders, or place near natural wood furniture for an organic feel.</p>
+            </div>
+            <div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+              <h4 class="font-bold text-deep-forest text-sm mb-1">💡 Zero Maintenance</h4>
+              <p class="text-xs text-on-surface-variant/80">No watering, no fertilizer, no repotting — enjoy lush greenery year-round with zero effort.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-shipping" class="pdp-tab-content hidden space-y-4 text-on-surface-variant text-sm sm:text-base leading-relaxed font-body-md">
+          <p>
+            📦 <strong>Plant-Safe Packaging:</strong> Our custom-designed eco-friendly packaging locks the pot and base securely while allowing safe handling during transit.
+          </p>
+          <p>
+            🛡️ <strong>Transit Guarantee:</strong> In the rare event of transit damage, take a picture within 24 hours of delivery and we will send a free replacement immediately.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    {% if related.length %}
+    <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-10">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-headline-lg text-2xl sm:text-3xl font-bold text-deep-forest">More from {{ product.category }}</h2>
+        <a href="/collections/{{ product.category | lower }}/" class="text-xs font-bold text-deep-forest hover:text-amber-gold transition-colors font-label-md">View Collection →</a>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for p in related %}
+          {% include 'partials/product-card.html' %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </main>
+
+  {% include 'partials/footer.html' %}
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- Global Application Scripts -->
+  <script>window.SANGO_PRODUCTS = {{ plants.products | json | safe }};</script>
+  <script src="/js/event-bus.js"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/supabase-auth.js"></script>
+  <script src="/js/wishlist.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/checkout.js"></script>
+  <script src="/js/orders-tracker.js"></script>
+  <script src="/js/catalog.js"></script>
+  <script src="/js/inquiry.js"></script>
+  <script src="/js/main.js"></script>
+
+  <script>
+    (function () {
+      var qty = document.getElementById('pdp-qty');
+      var plus = document.getElementById('pdp-plus');
+      var minus = document.getElementById('pdp-minus');
+      var addBtns = document.querySelectorAll('[data-add-to-cart][data-slug], [data-buy-now][data-slug]');
+      
+      function sync() {
+        var v = Math.max(1, parseInt(qty ? qty.value : 1, 10) || 1);
+        addBtns.forEach(function (btn) { btn.dataset.qty = v; });
+      }
+      
+      if (plus && qty) plus.addEventListener('click', function () { qty.value = Math.min(20, (parseInt(qty.value, 10) || 1) + 1); sync(); });
+      if (minus && qty) minus.addEventListener('click', function () { qty.value = Math.max(1, (parseInt(qty.value, 10) || 1) - 1); sync(); });
+      if (qty) qty.addEventListener('change', sync);
+      sync();
+
+      // Tab Switcher
+      var tabs = document.querySelectorAll('.pdp-tab');
+      var contents = document.querySelectorAll('.pdp-tab-content');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) {
+            t.classList.remove('active', 'font-bold', 'text-deep-forest', 'border-amber-gold');
+            t.classList.add('font-medium', 'text-on-surface-variant', 'border-transparent');
+          });
+          tab.classList.add('active', 'font-bold', 'text-deep-forest', 'border-amber-gold');
+          tab.classList.remove('font-medium', 'text-on-surface-variant', 'border-transparent');
+          
+          var targetId = 'tab-' + tab.dataset.tab;
+          contents.forEach(function(c) {
+            if (c.id === targetId) c.classList.remove('hidden');
+            else c.classList.add('hidden');
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

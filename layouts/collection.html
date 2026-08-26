@@ -1,0 +1,93 @@
+---
+layout: base
+---
+
+{% set items = plants.products | byCategory(col.title) %}
+
+<main class="bg-background min-h-screen pb-20 pt-[80px]">
+  
+  <!-- Premium Category Banner Header -->
+  <section class="relative bg-deep-forest text-on-primary overflow-hidden py-16 md:py-20 border-b border-amber-gold/20">
+    <img src="{{ col.banner }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 scale-105 filter blur-[1px]" aria-hidden="true">
+    <div class="absolute inset-0 bg-gradient-to-t from-deep-forest via-deep-forest/80 to-transparent"></div>
+    <div class="relative max-w-[1440px] mx-auto px-4 md:px-margin-desktop text-center z-10">
+      <nav class="inline-flex items-center gap-2 text-xs font-medium text-white/70 mb-3" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-amber-gold transition-colors">Home</a>
+        <span>›</span>
+        <a href="/collections/" class="hover:text-amber-gold transition-colors">Collections</a>
+        <span>›</span>
+        <span class="text-amber-gold font-bold">{{ col.title }}</span>
+      </nav>
+      
+      <h1 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">{{ col.heading }}</h1>
+      <p class="text-white/80 text-sm sm:text-base max-w-2xl mx-auto mb-4 font-body-md">{{ col.tagline }}</p>
+      <span class="inline-block bg-amber-gold text-deep-forest px-4 py-1.5 rounded-full text-xs font-bold shadow-md">
+        {{ items.length }} Varieties Available
+      </span>
+    </div>
+  </section>
+
+  <!-- Category Filter Pills & Sorting Bar -->
+  <div class="border-b border-outline-variant/30 sticky top-[80px] z-30 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop flex flex-wrap gap-4 overflow-x-auto py-3 items-center justify-between">
+      <div class="flex gap-2.5 items-center">
+        <a href="/collections/" class="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-100 border border-gray-200 hover:border-deep-forest text-gray-700 transition-colors">All Collections</a>
+        {% for c in plants.collectionsList %}
+          {% if c.key == col.key %}
+            <span class="shrink-0 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-gold text-deep-forest shadow-sm">{{ c.title }} ({{ c.count }})</span>
+          {% else %}
+            <a href="/collections/{{ c.key }}/" class="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-100 border border-gray-200 hover:border-deep-forest text-gray-700 transition-colors">{{ c.title }} ({{ c.count }})</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="ml-auto shrink-0 flex items-center gap-2">
+        <label for="sort-select" class="text-xs text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Sort by:</label>
+        <select id="sort-select" class="text-xs font-bold border border-gray-200 rounded-full px-4 py-1.5 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-deep-forest shadow-sm">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="discount">Biggest Discount</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-10">
+    <div id="collection-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      {% for p in items %}
+        {% include 'partials/product-card.html' %}
+      {% endfor %}
+    </div>
+
+    <div class="mt-14 text-center bg-white rounded-3xl border border-outline-variant/30 p-8 shadow-sm">
+      <h3 class="font-headline-sm font-bold text-xl text-deep-forest mb-1">Looking for a different variety?</h3>
+      <p class="text-on-surface-variant text-sm mb-5 font-body-md">Browse our complete artificial plants catalogue with {{ plants.stats.totalProducts }} handcrafted items.</p>
+      <a href="/products/" class="bg-amber-gold hover:bg-amber-400 text-deep-forest px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md inline-block">
+        Browse All {{ plants.stats.totalProducts }} Varieties →
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var sel = document.getElementById('sort-select');
+  var grid = document.getElementById('collection-grid');
+  if (!sel || !grid) return;
+  sel.addEventListener('change', function () {
+    var cards = Array.prototype.slice.call(grid.children);
+    var v = sel.value;
+    cards.sort(function (a, b) {
+      if (v === 'price-asc') return (+a.dataset.price) - (+b.dataset.price);
+      if (v === 'price-desc') return (+b.dataset.price) - (+a.dataset.price);
+      if (v === 'rating') return (+b.dataset.rating) - (+a.dataset.rating);
+      if (v === 'discount') return (+b.dataset.discount) - (+a.dataset.discount);
+      return 0;
+    });
+    cards.forEach(function (c) { grid.appendChild(c); });
+  });
+});
+</script>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#efebe9"/><stop offset="60%" stop-color="#a5d6a7"/><stop offset="100%" stop-color="#388e3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <g transform="translate(400,240)" text-anchor="middle">
+    <text y="-30" font-size="110">🌳</text>
+    <text y="70" font-size="46" font-family="Georgia, serif" font-weight="bold" fill="#1b5e20">INDOOR TREES</text>
+  </g>
+</svg>

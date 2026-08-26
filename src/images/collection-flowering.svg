@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fce4ec"/><stop offset="100%" stop-color="#f48fb1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <g transform="translate(400,300)" text-anchor="middle">
+    <text y="-40" font-size="150">🌸</text>
+    <text y="90" font-size="52" font-family="Georgia, serif" font-weight="bold" fill="#880e4f">FLOWERING</text>
+    <text y="140" font-size="24" font-family="Arial" fill="#ad1457">Seasonal Blooms • Fragrant</text>
+  </g>
+</svg>

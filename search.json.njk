@@ -1,0 +1,9 @@
+---
+permalink: /search.json
+eleventyExcludeFromCollections: true
+---
+[
+{%- for p in plants.products -%}
+  {"slug": {{ p.slug | dump }}, "name": {{ p.name | dump }}, "category": {{ p.category | dump }}, "size": {{ p.size | dump }}, "price": {{ p.price }}, "mrp": {{ p.mrp }}, "image": {{ p.image | dump }}}{% if not loop.last %},{% endif %}
+{%- endfor -%}
+]

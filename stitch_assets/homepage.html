@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sango Plants - Luxury Nursery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-tertiary-fixed": "#3e001d",
+                            "outline-variant": "#c0c9bb",
+                            "moss-muted": "#4E7051",
+                            "on-background": "#1a1c1b",
+                            "secondary-fixed": "#ffdfa0",
+                            "surface-container-lowest": "#ffffff",
+                            "secondary": "#795900",
+                            "surface-container": "#efeeec",
+                            "secondary-container": "#ffbf00",
+                            "on-primary-fixed-variant": "#0c5216",
+                            "background": "#faf9f7",
+                            "on-primary-container": "#90d689",
+                            "error": "#ba1a1a",
+                            "error-container": "#ffdad6",
+                            "surface-container-high": "#e9e8e6",
+                            "on-tertiary-container": "#ffaec6",
+                            "outline": "#717a6d",
+                            "charcoal-text": "#1A1A1A",
+                            "inverse-on-surface": "#f1f1ef",
+                            "on-secondary": "#ffffff",
+                            "surface-bright": "#faf9f7",
+                            "on-primary": "#ffffff",
+                            "on-secondary-fixed-variant": "#5c4300",
+                            "surface-tint": "#2a6b2c",
+                            "tertiary-fixed": "#ffd9e2",
+                            "tertiary-container": "#883454",
+                            "on-secondary-fixed": "#261a00",
+                            "secondary-fixed-dim": "#fbbc00",
+                            "surface-dim": "#dadad8",
+                            "on-surface-variant": "#41493e",
+                            "on-error": "#ffffff",
+                            "on-primary-fixed": "#002203",
+                            "surface-container-low": "#f4f3f1",
+                            "primary-container": "#1b5e20",
+                            "tertiary-fixed-dim": "#ffb1c8",
+                            "on-surface": "#1a1c1b",
+                            "ivory-base": "#F9F8F6",
+                            "on-tertiary": "#ffffff",
+                            "surface-container-highest": "#e3e2e0",
+                            "tertiary": "#6b1d3d",
+                            "on-tertiary-fixed-variant": "#7a2949",
+                            "amber-gold": "#FFBF00",
+                            "deep-forest": "#1B5E20",
+                            "primary-fixed-dim": "#91d78a",
+                            "on-secondary-container": "#6d5000",
+                            "surface": "#faf9f7",
+                            "inverse-surface": "#2f3130",
+                            "surface-variant": "#e3e2e0",
+                            "primary": "#00450d",
+                            "primary-fixed": "#acf4a4",
+                            "on-error-container": "#93000a",
+                            "inverse-primary": "#91d78a"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "margin-mobile": "20px",
+                            "margin-desktop": "80px",
+                            "section-gap": "120px",
+                            "gutter": "24px",
+                            "base": "8px"
+                    },
+                    "fontFamily": {
+                            "body-lg": [
+                                    "Inter"
+                            ],
+                            "headline-lg": [
+                                    "Playfair Display"
+                            ],
+                            "headline-sm": [
+                                    "Playfair Display"
+                            ],
+                            "display-lg": [
+                                    "Playfair Display"
+                            ],
+                            "display-lg-mobile": [
+                                    "Playfair Display"
+                            ],
+                            "label-md": [
+                                    "Inter"
+                            ],
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "label-sm": [
+                                    "Inter"
+                            ]
+                    },
+                    "fontSize": {
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-lg": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "1.3",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "headline-sm": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "1.4",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "display-lg": [
+                                    "64px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "display-lg-mobile": [
+                                    "40px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "label-md": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "0.05em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "label-sm": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "fontWeight": "500"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+<style>
+        body { background-color: #F9F8F6; color: #1A1A1A; }
+    </style>
+</head>
+<body class="antialiased font-body-lg text-body-lg bg-background text-on-background">
+<!-- Announcement Bar -->
+<div class="bg-deep-forest text-on-primary py-2 text-center font-label-sm text-label-sm w-full z-[60] relative">
+        Free Shipping on orders over ₹2000 | Transit Guarantee Included
+    </div>
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container text-primary dark:text-primary-fixed fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm mt-[34px]">
+<div class="flex justify-between items-center px-margin-desktop h-20 max-w-[1440px] mx-auto">
+<!-- Brand Logo -->
+<a class="flex items-center gap-4 group" href="/">
+<img alt="Sango Plants Logo" class="h-12 w-12 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj0mJXw-vwNRYzEqPwOB--vP3u4XXY5vcfKpcYN5PdJ6oxiovOtjMtNLnlRZYW1XdUvWvh3QdEXPVk7OKI4x56yYGzYZLvL4tPTAAx6HVHROaryeAgTKxlB6rKxIFJxcVGq84mEpuCIt-rR5VHu74PvAzfqU5zV7SpjsXK0P5wENx8-IDwCDUMuuTscvX1tTrilep28tMbkD08X_gdW85-rvimzpWCL-GOE7xPEUBJYOzCMVB91H-_iymn-IhopVF8LdaArO5aL_xw"/>
+<span class="font-headline-lg text-headline-lg tracking-tighter text-deep-forest dark:text-primary-fixed group-hover:text-amber-gold transition-colors duration-200">Sango Plants</span>
+</a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-8 font-label-md text-label-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="#">Shop All</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="#">Rare Species</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="#">Care Guides</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="#">Our Nursery</a>
+</nav>
+<!-- Trailing Icons -->
+<div class="flex gap-4 items-center">
+<button class="text-on-surface-variant hover:text-amber-gold transition-colors duration-200 active:scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-amber-gold transition-colors duration-200 active:scale-95 duration-150 relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-amber-gold text-deep-forest text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant hover:text-amber-gold transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-[114px]"> <!-- Account for fixed header + announcement -->
+<!-- Hero Section -->
+<section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image Placeholder (Requires https://lh3.googleusercontent.com/aida-public/AB6AXuBB_94yIdeiKk4Sm4mj_j5MbxFryUJOYNc5FeFvDJ3QLjKK9pZV6eM7T3XbsKr_6RACQTRkMYvz6S1Rnx9OC-Wt1MnYt5fQ8fsek7Vc-rUd2jZSbQerGLeVi0Iz2ZDFYJHtW9bbMbUdUDjgghByIfAfZAsCKu4kvNR8Xfbe7aWRLEP4_Lmt0SEHDLQ1mT5qVvs3T1bGBtOeDTrWBsMwA7dvA_CkJ5Ma2skbf5Q6Dk8iVHhRhIQVL-1qXaoFBsjT5IdUe7wxK3wy8MjA but was provided IMAGE_5 in available. Will use placeholder as instructed for missing ones, though IMAGE_4 was requested in prompt, I only have IMAGE_5 in available images. The prompt asks to use https://lh3.googleusercontent.com/aida-public/AB6AXuBB_94yIdeiKk4Sm4mj_j5MbxFryUJOYNc5FeFvDJ3QLjKK9pZV6eM7T3XbsKr_6RACQTRkMYvz6S1Rnx9OC-Wt1MnYt5fQ8fsek7Vc-rUd2jZSbQerGLeVi0Iz2ZDFYJHtW9bbMbUdUDjgghByIfAfZAsCKu4kvNR8Xfbe7aWRLEP4_Lmt0SEHDLQ1mT5qVvs3T1bGBtOeDTrWBsMwA7dvA_CkJ5Ma2skbf5Q6Dk8iVHhRhIQVL-1qXaoFBsjT5IdUe7wxK3wy8MjA. I will use a placeholder url and data-alt as it's not in the 'Available Images' list but requested in the prompt.) -->
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full" data-alt="A lush, expansive view of a luxury modern Indian living room bathed in natural sunlight. High-key lighting highlights the vibrant green of several large, premium nursery-grown indoor plants like Monstera and Ficus. The space features minimalist furniture, rich textures, deep forest green accents, and a serene, aspirational mood, embodying lush living." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVg-IBOHWqoHxaKHh91naG64lPrFwZdU7tTQ9-NZiQGp5GTAU908OskF9f3ZZ-xMqNJe0ZdgjCTJG3szwHgP-2VMaQ8U2XosfLmL9TlDkHWNqeYfsFIAv3LDXbEzGC4x8IUB2IjhbnYq83l_i_ssXgz2MXtyKAsuPRmQhvdmarGE2otduL8TxElxq894oB40qr455We9BLNcMdfjzDkTprgrz-pPqZfcT3fJF-gC2pNZDauQ3kpvjukpwvM0FWD92c7Db2GD7MuTvd')"></div>
+<div class="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div> <!-- Dark overlay for text readability -->
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center">
+<h1 class="font-display-lg-mobile md:font-display-lg text-on-primary mb-6 drop-shadow-md">Lush Living, Delivered.</h1>
+<p class="font-body-lg text-body-lg text-on-primary/90 mb-10 max-w-2xl drop-shadow-sm">Premium nursery-grown plants curated for modern Indian homes.</p>
+<a class="bg-deep-forest text-on-primary px-10 py-4 rounded font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-colors duration-300 shadow-md" href="#shop">Explore Collection</a>
+</div>
+</section>
+<!-- Trust Badges -->
+<section class="bg-surface-container-low py-12 border-b border-outline-variant/20">
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-outline-variant/30">
+<div class="flex flex-col items-center gap-3 pt-6 md:pt-0">
+<span class="material-symbols-outlined text-4xl text-amber-gold" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+<h3 class="font-headline-sm text-headline-sm text-deep-forest">Free Shipping</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">On all orders over ₹2000</p>
+</div>
+<div class="flex flex-col items-center gap-3 pt-6 md:pt-0">
+<span class="material-symbols-outlined text-4xl text-amber-gold" style="font-variation-settings: 'FILL' 0;">potted_plant</span>
+<h3 class="font-headline-sm text-headline-sm text-deep-forest">Premium Pot Included</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ready to display upon arrival</p>
+</div>
+<div class="flex flex-col items-center gap-3 pt-6 md:pt-0">
+<span class="material-symbols-outlined text-4xl text-amber-gold" style="font-variation-settings: 'FILL' 0;">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-deep-forest">Transit Guarantee</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">100% healthy plant arrival</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Grid (Shop by Space) - Bento Style -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto" id="shop">
+<div class="text-center mb-16">
+<h2 class="font-display-lg-mobile md:font-headline-lg text-deep-forest mb-4">Shop by Space</h2>
+<div class="w-24 h-1 bg-amber-gold mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px]">
+<!-- Living Room (Large) -->
+<a class="md:col-span-8 row-span-2 relative group overflow-hidden rounded-lg shadow-sm border border-outline-variant/20 block" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A spacious, brightly lit modern living room featuring a large, statement Ficus Audrey plant in a textured golden pot. The room is decorated in neutral ivory tones with subtle deep forest green accents. The aesthetic is luxurious, airy, and inviting, emphasizing high-end interior landscaping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc8qHRwiVB2BDK_DfLFnHD8im7lURw2AC_0T4N_pW1AJ75vsa77rtGWV5qRRNqObi69YnU_o3C_ngKqT07-Br6kuPogV3grI4K47fNLV-ylmKholDYNikWRJW857EqxOTUp-autOMqsCo1eQfEEJUXo_6kwTdbvAuam-ankmMgP1U8cCaStA__auOKbadL9WU_QnIcc3h0g6POt-xQBH3Ro5_sAIyXb1w25BKcuRtGpW8cIU8nRNF3ur92PKEj9eRXsSXCDoi1-fXs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/80 via-deep-forest/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<h3 class="font-headline-lg text-headline-lg text-on-primary mb-2">Living Room</h3>
+<span class="font-label-md text-label-md text-amber-gold uppercase tracking-wider group-hover:underline">Shop Collection →</span>
+</div>
+</a>
+<!-- Office (Tall) -->
+<a class="md:col-span-4 row-span-2 relative group overflow-hidden rounded-lg shadow-sm border border-outline-variant/20 block" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sleek, minimalist home office desk setup with a ZZ plant in a matte black ceramic pot. Natural light streams in from a nearby window. The scene is calm, focused, and professional, using a sophisticated palette of soft whites and deep greens, ideal for a luxury workspace aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlR62xP-P9IZV45u3pfZjB5Xbl2TNV54_5VT7hqltUb4cn7ilbGfdvm3QSAOgfjItAFozoBE5V0XH_YcKagm8AqLx1CBoSy19k1PFS79UkmHbOCla7sY_HkuqbeR8ntfdDLnN3j1beYo71U1DPxyvwmnrX3ve5isO5Vt2ny9sd4UrwlcEAMfrq9_ebuvckzJ5sodoJUEjGhjhdwIpNWUChoDUZ3v7U-rjhPYHAsF4J00o4oFkHvY_gm7Y3bhGtEt31WI6rzHWprlbZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/80 via-deep-forest/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<h3 class="font-headline-lg text-headline-lg text-on-primary mb-2">Office</h3>
+<span class="font-label-md text-label-md text-amber-gold uppercase tracking-wider group-hover:underline">Shop Collection →</span>
+</div>
+</a>
+<!-- Balcony (Wide) -->
+<a class="md:col-span-6 row-span-1 relative group overflow-hidden rounded-lg shadow-sm border border-outline-variant/20 block" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A lush, sun-drenched urban balcony filled with hanging ferns and trailing pothos. Terracotta and muted moss green pots sit on a slatted wooden floor. The mood is a vibrant, natural oasis in the city, showcasing resilient outdoor plants in a premium setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH82ZDxZcKmuRqvPLQT18647gPFXnKX2x-8_LV2039x13329FnpxgLoMzBw6xBrFt5keANvrG20rA4qFZUPJobO1Ymoujkv7uRDLHFG1M5ttxOKsXA2_vHLZnoF2sQLmvYN6GXhArjr4--Ow-gvKHrpOMbqOn2ob3eksj6g0de2MvHtE3OzsQ-B-iJA5_w1sJYNpIKLYeS9FlCCq8h5RXEhFcwfrx__Ffc18vAqT24w8Z01KM0bm-Osu_bNTiVpzbpVJ-5qx7vZND7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Balcony</h3>
+<span class="font-label-sm text-label-sm text-amber-gold uppercase tracking-wider group-hover:underline">Explore →</span>
+</div>
+</a>
+<!-- Bedroom (Wide) -->
+<a class="md:col-span-6 row-span-1 relative group overflow-hidden rounded-lg shadow-sm border border-outline-variant/20 block" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A serene, softly lit bedroom with a large Snake Plant in a textured white pot next to a low-profile bed. The bedding is crisp ivory linen. The atmosphere is calm, purifying, and restful, focusing on low-light tolerant plants suitable for a luxury sleep sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzI6wY4ijcpj-Ux4cEQ7S6866-6hARyrHkasmikhi5QQ8c0iBG8E1Nf0whtK-LITE08oNo_WKQmwbFNZGF16IeUG0megM2hP6dbaAcNkLi0Balr6ok_AZNuVWNEMHvOoDAmpcCfeC2wmO-xSH8VC5hntvUhkOyH633srVyVXENnvm7e-YzloMEOa5gUfnZs0pogCqK8XK6ICTPlA-nMkbtb-_23_Ky-ecpt88ed9vYSpbTKqlHaXEfuGJZHeiwgcgbYOIvUXq_jsDH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline-sm text-headline-sm text-on-primary mb-1">Bedroom</h3>
+<span class="font-label-sm text-label-sm text-amber-gold uppercase tracking-wider group-hover:underline">Explore →</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-lowest w-full bg-surface-container-highest border-t border-outline-variant mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-[1440px] mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-deep-forest font-headline-sm text-headline-sm text-deep-forest">Sango Plants</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Cultivating Botanical Excellence for the modern interior.</p>
+</div>
+<!-- Links Column -->
+<div class="flex flex-col gap-3">
+<h4 class="font-label-md text-label-md text-deep-forest uppercase tracking-wider mb-2">Explore</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-deep-forest underline transition-all focus:ring-2 focus:ring-amber-gold outline-none w-fit" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-deep-forest underline transition-all focus:ring-2 focus:ring-amber-gold outline-none w-fit" href="#">Shipping &amp; Returns</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-deep-forest underline transition-all focus:ring-2 focus:ring-amber-gold outline-none w-fit" href="#">Wholesale</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-deep-forest underline transition-all focus:ring-2 focus:ring-amber-gold outline-none w-fit" href="#">Contact Us</a>
+</div>
+<div class="md:col-span-4 mt-12 pt-8 border-t border-outline-variant/30 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Sango Plants. Cultivating Botanical Excellence.</p>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

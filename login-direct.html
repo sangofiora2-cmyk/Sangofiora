@@ -1,0 +1,215 @@
+---
+layout: base
+title: Sign In | Sango Fiora
+description: Sign in to your Sango Fiora account to track orders, save wishlists, and manage your purchases.
+permalink: /login.html
+---
+
+<main class="bg-background min-h-screen pb-16 pt-[80px] flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+
+    <!-- Logo & Welcome -->
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-3">🌿</div>
+      <h1 class="font-headline-lg text-2xl sm:text-3xl text-deep-forest">Welcome to Sango Fiora</h1>
+      <p class="text-on-surface-variant text-sm mt-2">Sign in to track orders, sync your wishlist, and unlock exclusive offers.</p>
+    </div>
+
+    <!-- Auth Card -->
+    <div class="bg-white rounded-3xl border border-outline-variant/30 p-6 sm:p-8 shadow-lg space-y-5">
+
+      <!-- Supabase Not Configured Warning -->
+      <div id="auth-not-configured" class="hidden bg-amber-50 border border-amber-300 rounded-2xl p-4 text-center">
+        <p class="text-amber-800 text-xs font-bold mb-1">⚠️ Supabase Not Configured</p>
+        <p class="text-amber-700 text-[11px]">Open <code class="bg-amber-100 px-1 rounded">js/supabase-client.js</code> and add your Supabase Project URL &amp; Anon Key.</p>
+      </div>
+
+      <!-- Social Login Buttons -->
+      <div class="space-y-3">
+        <button type="button" data-auth-google
+          class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 hover:border-deep-forest hover:bg-surface-container-low py-3.5 rounded-2xl font-bold text-sm text-gray-800 transition-all shadow-sm">
+          <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+          Continue with Google
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-4">
+        <div class="flex-1 h-px bg-gray-200"></div>
+        <span class="text-xs text-gray-400 font-medium">or sign in with email</span>
+        <div class="flex-1 h-px bg-gray-200"></div>
+      </div>
+
+      <!-- Login / Signup Toggle -->
+      <div class="flex bg-surface-container-high rounded-2xl p-1">
+        <button type="button" id="tab-login" class="flex-1 py-2.5 rounded-xl text-xs font-bold bg-deep-forest text-white transition-all">Sign In</button>
+        <button type="button" id="tab-signup" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-on-surface-variant hover:text-deep-forest transition-all">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label for="login-email" class="block text-xs font-bold text-gray-700 mb-1.5">Email Address</label>
+          <input type="email" id="login-email" required placeholder="your@email.com"
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-deep-forest focus:border-transparent transition-all">
+        </div>
+        <div>
+          <label for="login-password" class="block text-xs font-bold text-gray-700 mb-1.5">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••" minlength="6"
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-deep-forest focus:border-transparent transition-all">
+        </div>
+        <button type="submit"
+          class="w-full bg-deep-forest hover:bg-primary-container text-white py-3.5 rounded-2xl font-bold text-sm shadow-md transition-all">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Signup Form (hidden by default) -->
+      <form id="signup-form" class="space-y-4 hidden">
+        <div>
+          <label for="signup-name" class="block text-xs font-bold text-gray-700 mb-1.5">Full Name</label>
+          <input type="text" id="signup-name" required placeholder="Your Name"
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-deep-forest focus:border-transparent transition-all">
+        </div>
+        <div>
+          <label for="signup-email" class="block text-xs font-bold text-gray-700 mb-1.5">Email Address</label>
+          <input type="email" id="signup-email" required placeholder="your@email.com"
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-deep-forest focus:border-transparent transition-all">
+        </div>
+        <div>
+          <label for="signup-password" class="block text-xs font-bold text-gray-700 mb-1.5">Password</label>
+          <input type="password" id="signup-password" required placeholder="Min. 6 characters" minlength="6"
+            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-deep-forest focus:border-transparent transition-all">
+        </div>
+        <button type="submit"
+          class="w-full bg-amber-gold hover:bg-amber-400 text-deep-forest py-3.5 rounded-2xl font-bold text-sm shadow-md transition-all">
+          Create Account
+        </button>
+      </form>
+
+      <!-- Status Message -->
+      <div id="auth-status" class="hidden text-center text-xs font-bold py-2 px-4 rounded-xl"></div>
+    </div>
+
+    <!-- Already Logged In State -->
+    <div id="auth-logged-in" class="hidden bg-white rounded-3xl border border-outline-variant/30 p-6 sm:p-8 shadow-lg text-center space-y-4">
+      <div class="text-5xl">✅</div>
+      <h2 class="font-headline-sm text-xl font-bold text-deep-forest">You're signed in!</h2>
+      <p id="auth-welcome-name" class="text-on-surface-variant text-sm"></p>
+      <div class="flex flex-col gap-3">
+        <a href="/products/" class="bg-deep-forest hover:bg-primary-container text-white py-3 rounded-2xl font-bold text-sm block transition-all">Continue Shopping</a>
+        <a href="/admin/" id="auth-admin-go" class="hidden bg-amber-gold hover:bg-amber-400 text-deep-forest py-3 rounded-2xl font-bold text-sm block transition-all">Go to Admin Dashboard</a>
+        <button type="button" data-auth-signout class="text-red-500 hover:text-red-700 font-bold text-sm transition-colors py-2">Sign Out</button>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <p class="text-center text-[11px] text-gray-400 mt-6">By signing in, you agree to Sango Fiora's Terms of Service and Privacy Policy.</p>
+  </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var tabLogin = document.getElementById('tab-login');
+  var tabSignup = document.getElementById('tab-signup');
+  var loginForm = document.getElementById('login-form');
+  var signupForm = document.getElementById('signup-form');
+  var statusEl = document.getElementById('auth-status');
+  var notConfigured = document.getElementById('auth-not-configured');
+  var loggedInBox = document.getElementById('auth-logged-in');
+  var authCard = loginForm ? loginForm.closest('.bg-white') : null;
+
+  if (!window.SUPABASE_CONFIGURED) {
+    if (notConfigured) notConfigured.classList.remove('hidden');
+  }
+
+  function showStatus(msg, isError) {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.className = 'text-center text-xs font-bold py-2 px-4 rounded-xl ' +
+      (isError ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-green-50 text-green-600 border border-green-200');
+    statusEl.classList.remove('hidden');
+  }
+
+  if (tabLogin && tabSignup) {
+    tabLogin.addEventListener('click', function () {
+      tabLogin.classList.add('bg-deep-forest', 'text-white');
+      tabLogin.classList.remove('text-on-surface-variant');
+      tabSignup.classList.remove('bg-deep-forest', 'text-white');
+      tabSignup.classList.add('text-on-surface-variant');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    });
+    tabSignup.addEventListener('click', function () {
+      tabSignup.classList.add('bg-deep-forest', 'text-white');
+      tabSignup.classList.remove('text-on-surface-variant');
+      tabLogin.classList.remove('bg-deep-forest', 'text-white');
+      tabLogin.classList.add('text-on-surface-variant');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    });
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('login-email').value.trim();
+      var password = document.getElementById('login-password').value;
+      if (!email || !password) return;
+
+      showStatus('Signing in...', false);
+      window.SangoAuth.signInWithEmail(email, password).then(function (res) {
+        if (res.error) {
+          showStatus(res.error.message || 'Sign in failed', true);
+        } else {
+          showStatus('Signed in successfully! Redirecting...', false);
+          setTimeout(function () { location.href = '/'; }, 1000);
+        }
+      });
+    });
+  }
+
+  if (signupForm) {
+    signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('signup-name').value.trim();
+      var email = document.getElementById('signup-email').value.trim();
+      var password = document.getElementById('signup-password').value;
+      if (!name || !email || !password) return;
+
+      showStatus('Creating your account...', false);
+      window.SangoAuth.signUpWithEmail(email, password, name).then(function (res) {
+        if (res.error) {
+          showStatus(res.error.message || 'Sign up failed', true);
+        } else {
+          showStatus('Account created! Check your email to verify, then sign in.', false);
+        }
+      });
+    });
+  }
+
+  function checkLoggedIn() {
+    if (window.SangoAuth && window.SangoAuth.isLoggedIn()) {
+      if (authCard) authCard.classList.add('hidden');
+      if (loggedInBox) {
+        loggedInBox.classList.remove('hidden');
+        var nameEl = document.getElementById('auth-welcome-name');
+        var profile = window.SangoAuth.getProfile();
+        var user = window.SangoAuth.getUser();
+        if (nameEl) {
+          nameEl.textContent = 'Welcome back, ' + (profile ? profile.full_name : user.email) + '!';
+        }
+        var adminGo = document.getElementById('auth-admin-go');
+        if (adminGo && profile && profile.role === 'admin') {
+          adminGo.classList.remove('hidden');
+        }
+      }
+    }
+  }
+
+  if (window.AppEvent) {
+    window.AppEvent.on('auth:changed', checkLoggedIn);
+  }
+  setTimeout(checkLoggedIn, 1500);
+});
+</script>

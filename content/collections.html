@@ -1,0 +1,71 @@
+---
+layout: base
+title: Artificial Plant Collections — Foliage, Palms, Trees & Flowering | Sango Fiora
+description: Explore Sango Fiora collections — lush foliage, resort-style palms, statement trees and flowering beauties. Handcrafted, pot included, delivered pan-India.
+permalink: /collections/
+---
+
+<main class="bg-background min-h-screen pb-20 pt-[80px]">
+  
+  <!-- Premium Collections Hero Banner -->
+  <section class="relative bg-deep-forest text-on-primary py-16 md:py-20 overflow-hidden border-b border-amber-gold/20">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop text-center relative z-10">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-bold text-amber-gold uppercase tracking-widest mb-3">
+        <span>🌿 {{ plants.stats.totalProducts }} Botanical Designs</span>
+        <span>·</span>
+        <span>4 Curated Spaces</span>
+      </span>
+      <h1 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Shop by Collection</h1>
+      <p class="text-white/80 text-sm sm:text-base max-w-2xl mx-auto">
+        Handcrafted artificial plant categories designed for living rooms, offices, balconies, bedrooms, and commercial spaces across India.
+      </p>
+    </div>
+  </section>
+
+  <!-- Collections Grid -->
+  <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-14">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for c in plants.collectionsList %}
+      <a href="/collections/{{ c.key }}/" class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 aspect-[4/5] bg-deep-forest block border border-outline-variant/30">
+        <img src="{{ c.banner }}" alt="{{ c.heading }}" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-deep-forest/95 via-deep-forest/40 to-transparent"></div>
+        <div class="absolute top-4 left-4 z-10">
+          <span class="bg-amber-gold text-deep-forest text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md">{{ c.count }} Varieties</span>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-on-primary z-10">
+          <h2 class="font-headline-sm text-2xl font-bold mb-1 text-white group-hover:text-amber-gold transition-colors">{{ c.heading }}</h2>
+          <p class="text-xs text-white/70 mb-4 line-clamp-2">{{ c.tagline }}</p>
+          <span class="inline-flex items-center gap-2 text-xs font-bold bg-amber-gold text-deep-forest px-4 py-2 rounded-full group-hover:bg-amber-400 transition-all shadow-md">
+            <span>Explore {{ c.heading }}</span>
+            <span>→</span>
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Today's Special Deals Block -->
+    {% if plants.deals.length %}
+    <div class="mt-16 bg-white rounded-3xl border border-outline-variant/30 p-6 sm:p-10 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-bold text-red-600 uppercase tracking-widest font-label-md">🔥 Limited Time Deals</span>
+          <h2 class="font-headline-lg text-2xl sm:text-3xl font-bold text-deep-forest mt-1">Today's Special Discounts</h2>
+        </div>
+        <a href="/products/" class="inline-flex items-center gap-1 text-xs font-bold text-deep-forest hover:text-amber-gold transition-colors bg-surface-container-high px-4 py-2 rounded-full">
+          <span>View All {{ plants.products.length }} Plants</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        {% for p in plants.deals %}
+          {% include 'partials/product-card.html' %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </section>
+
+</main>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b5e20"/><stop offset="100%" stop-color="#43a047"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="700" fill="url(#g)"/>
+  <g transform="translate(450,330)" text-anchor="middle">
+    <text y="-40" font-size="170">📦🌱</text>
+    <text y="100" font-size="56" font-family="Georgia, serif" font-weight="bold" fill="#ffffff">B2B WHOLESALE</text>
+    <text y="155" font-size="26" font-family="Arial" fill="#c8e6c9">Bulk Nursery Supply • Pan-India</text>
+  </g>
+</svg>

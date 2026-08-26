@@ -1,0 +1,160 @@
+<!-- TopAppBar (Stitch Fixed Header) -->
+<header class="bg-surface dark:bg-surface-container text-primary dark:text-primary-fixed fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+  <div class="flex justify-between items-center px-4 md:px-margin-desktop h-20 max-w-[1440px] mx-auto">
+    <!-- Brand Logo -->
+    <a class="flex items-center gap-3 group" href="/">
+      <div class="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-deep-forest flex items-center justify-center shadow-md group-hover:scale-105 group-hover:bg-amber-gold transition-all duration-300">
+        <span class="text-xl md:text-2xl group-hover:rotate-12 transition-transform duration-300">🌿</span>
+      </div>
+      <span class="font-headline-lg text-2xl md:text-headline-lg tracking-tighter text-deep-forest dark:text-primary-fixed group-hover:text-amber-gold transition-colors duration-200">Sango Fiora</span>
+    </a>
+
+    <!-- Navigation Links (Desktop) -->
+    <nav class="hidden md:flex gap-8 font-label-md text-label-md items-center">
+      <a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="/">Home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="/products/">Shop All</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="/collections/">Categories</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-amber-gold" href="/about/">About</a>
+      <a class="bg-amber-gold text-deep-forest px-5 py-2 rounded-full font-bold text-xs transition-all transform hover:scale-105 shadow-md" href="/contact/">Contact</a>
+    </nav>
+
+    <!-- Trailing Action Icons -->
+    <div class="flex gap-4 items-center">
+      <div id="search-form" class="relative hidden md:block">
+        <input type="search" id="search-input" placeholder="Search artificial plants…" autocomplete="off"
+          class="w-36 lg:w-48 bg-surface-container-high border border-outline-variant/50 rounded-full py-1.5 pl-8 pr-3 text-xs placeholder-on-surface-variant/60 focus:outline-none focus:bg-white focus:ring-2 focus:ring-deep-forest transition-all">
+        <span class="material-symbols-outlined absolute left-2.5 top-2 text-sm text-on-surface-variant/60 pointer-events-none">search</span>
+        <div id="search-results" class="hidden absolute right-0 top-full mt-2 w-80 max-h-96 overflow-y-auto bg-white text-gray-800 rounded-2xl shadow-2xl border border-outline-variant z-50"></div>
+      </div>
+
+      <button id="orders-open-btn" aria-label="Track orders" class="text-on-surface-variant hover:text-amber-gold transition-colors duration-200 active:scale-95 duration-150 relative">
+        <span class="material-symbols-outlined text-deep-forest">local_shipping</span>
+        <span id="orders-drawer-count" class="absolute -top-1.5 -right-1.5 bg-amber-gold text-deep-forest text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden shadow-sm">0</span>
+      </button>
+
+      <button id="wishlist-open-btn" aria-label="Open wishlist" class="text-on-surface-variant hover:text-amber-gold transition-colors duration-200 active:scale-95 duration-150 relative">
+        <span class="material-symbols-outlined text-pink-600">favorite</span>
+        <span id="wishlist-badge" class="absolute -top-1.5 -right-1.5 bg-pink-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden shadow-sm">0</span>
+      </button>
+
+      <button id="cart-open-btn" aria-label="Open cart" class="text-on-surface-variant hover:text-amber-gold transition-colors duration-200 active:scale-95 duration-150 relative flex items-center gap-1.5">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-amber-gold text-deep-forest text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden shadow-sm">0</span>
+      </button>
+
+      <!-- Auth: Login Button (shown when NOT logged in) -->
+      <a id="auth-login-btn" href="/login/" class="hidden md:flex items-center gap-1.5 bg-deep-forest text-white px-4 py-1.5 rounded-full font-bold text-xs hover:bg-primary-container transition-all shadow-sm">
+        <span class="material-symbols-outlined text-base">person</span>
+        <span>Sign In</span>
+      </a>
+
+      <!-- Auth: User Menu (shown when logged in) -->
+      <div id="auth-user-menu" class="hidden relative">
+        <button id="auth-user-toggle" class="flex items-center gap-2 px-2 py-1 rounded-full hover:bg-surface-container-high transition-all">
+          <img id="auth-user-avatar" src="" alt="" class="w-7 h-7 rounded-full object-cover border-2 border-amber-gold hidden">
+          <span id="auth-user-name" class="hidden md:inline text-xs font-bold text-deep-forest max-w-[100px] truncate">User</span>
+          <span class="material-symbols-outlined text-base text-on-surface-variant">expand_more</span>
+        </button>
+        <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-outline-variant/30 py-2 z-50">
+          <a href="/login/" class="block px-4 py-2.5 text-xs font-medium text-gray-700 hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined text-base align-middle mr-2">person</span>My Account
+          </a>
+          <a id="auth-admin-link" href="/admin/" class="hidden px-4 py-2.5 text-xs font-bold text-amber-700 hover:bg-amber-50 transition-colors">
+            <span class="material-symbols-outlined text-base align-middle mr-2">admin_panel_settings</span>Admin Dashboard
+          </a>
+          <hr class="my-1 border-outline-variant/30">
+          <button id="auth-signout-btn" class="w-full text-left px-4 py-2.5 text-xs font-medium text-red-600 hover:bg-red-50 transition-colors">
+            <span class="material-symbols-outlined text-base align-middle mr-2">logout</span>Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="menu-toggle" aria-label="Toggle navigation menu" class="md:hidden text-on-surface-variant hover:text-amber-gold transition-colors duration-200">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <nav id="mobile-menu" class="hidden md:hidden border-t border-outline-variant/30 px-4 py-4 space-y-2 text-sm bg-surface/95 backdrop-blur">
+    <div class="mb-3">
+      <input type="search" id="search-input-mobile" placeholder="Search artificial plants…" autocomplete="off"
+        class="w-full bg-surface-container-high border border-outline-variant/50 rounded-full py-2 px-4 text-sm text-on-background placeholder-on-surface-variant/60 focus:outline-none">
+    </div>
+    <a href="/" class="block py-2 px-3 rounded-lg hover:bg-surface-container-high font-medium">Home</a>
+    <a href="/products/" class="block py-2 px-3 rounded-lg hover:bg-surface-container-high font-medium">Shop All Plants</a>
+    <a href="/collections/" class="block py-2 px-3 rounded-lg hover:bg-surface-container-high font-medium">Categories</a>
+    <a href="/about/" class="block py-2 px-3 rounded-lg hover:bg-surface-container-high font-medium">About Us</a>
+    <a href="/contact/" class="block py-2.5 px-3 rounded-xl bg-amber-gold text-deep-forest font-bold text-center mt-2">Contact Us</a>
+  </nav>
+</header>
+
+<!-- Slide-over Cart Drawer -->
+<div id="cart-drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+<aside id="cart-drawer" class="fixed top-0 right-0 w-full max-w-md h-full bg-white text-gray-900 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+  <div class="px-6 py-4 bg-deep-forest text-white flex items-center justify-between border-b border-white/10">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">🪴</span>
+      <h2 class="font-headline-sm font-bold text-lg">Shopping Cart (<span id="drawer-count">0</span>)</h2>
+    </div>
+    <button id="cart-close-btn" aria-label="Close cart" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors text-xl font-bold">&times;</button>
+  </div>
+  <div id="drawer-items" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-gray-100"></div>
+  <div class="p-6 bg-surface-container-low border-t border-outline-variant/30 space-y-3">
+    <div class="flex justify-between text-sm text-gray-600"><span>Subtotal</span><span id="drawer-subtotal" class="font-bold text-gray-900">₹0</span></div>
+    <div class="flex justify-between text-sm text-gray-600"><span>Delivery</span><span id="drawer-delivery" class="font-bold text-deep-forest">FREE</span></div>
+    <hr class="border-outline-variant/30">
+    <div class="flex justify-between text-base font-bold text-gray-900"><span>Estimated Total</span><span id="drawer-total" class="text-deep-forest text-xl">₹0</span></div>
+    <button id="drawer-checkout-btn" class="w-full bg-amber-gold hover:bg-amber-400 text-deep-forest font-bold py-3.5 px-6 rounded-2xl text-base transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2">
+      <span>Proceed to Cart &amp; Checkout</span><span>→</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Slide-over Wishlist Drawer -->
+<div id="wishlist-drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+<aside id="wishlist-drawer" class="fixed top-0 right-0 w-full max-w-md h-full bg-white text-gray-900 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+  <div class="px-6 py-4 bg-deep-forest text-white flex items-center justify-between border-b border-white/10">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">❤️</span>
+      <h2 class="font-headline-sm font-bold text-lg">My Wishlist (<span id="wishlist-drawer-count">0</span>)</h2>
+    </div>
+    <button id="wishlist-close-btn" aria-label="Close wishlist" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors text-xl font-bold">&times;</button>
+  </div>
+  <div id="wishlist-drawer-items" class="flex-1 overflow-y-auto p-6 space-y-3"></div>
+</aside>
+
+<!-- Slide-over Orders Tracker Drawer -->
+<div id="orders-drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+<aside id="orders-drawer" class="fixed top-0 right-0 w-full max-w-md h-full bg-white text-gray-900 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+  <div class="px-6 py-4 bg-deep-forest text-white flex items-center justify-between border-b border-white/10">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">📦</span>
+      <h2 class="font-headline-sm font-bold text-lg">My Orders &amp; Tracking</h2>
+    </div>
+    <button id="orders-close-btn" aria-label="Close orders" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors text-xl font-bold">&times;</button>
+  </div>
+  <div id="orders-drawer-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+</aside>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    if (toggle && menu) toggle.addEventListener('click', function () { menu.classList.toggle('hidden'); });
+
+    // Auth dropdown toggle
+    var userToggle = document.getElementById('auth-user-toggle');
+    var dropdown = document.getElementById('auth-dropdown');
+    if (userToggle && dropdown) {
+      userToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('hidden');
+      });
+      document.addEventListener('click', function () {
+        dropdown.classList.add('hidden');
+      });
+    }
+  });
+</script>
