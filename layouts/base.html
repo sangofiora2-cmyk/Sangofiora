@@ -8,6 +8,9 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪴</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
@@ -21,20 +24,19 @@
 
   {% include 'partials/footer.html' %}
 
-  <!-- Supabase CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Supabase CDN (Deferred) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
 
-  <!-- Global Application Scripts -->
-  <script>window.SANGO_PRODUCTS = {{ plants.products | json | safe }};</script>
-  <script src="/js/event-bus.js"></script>
-  <script src="/js/supabase-client.js"></script>
-  <script src="/js/supabase-auth.js"></script>
-  <script src="/js/wishlist.js"></script>
-  <script src="/js/cart.js"></script>
-  <script src="/js/checkout.js"></script>
-  <script src="/js/orders-tracker.js"></script>
-  <script src="/js/catalog.js"></script>
-  <script src="/js/inquiry.js"></script>
-  <script src="/js/main.js"></script>
+  <!-- Global Application Scripts (Deferred for instant FCP/TBT) -->
+  <script src="/js/event-bus.js" defer></script>
+  <script src="/js/supabase-client.js" defer></script>
+  <script src="/js/supabase-auth.js" defer></script>
+  <script src="/js/wishlist.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/checkout.js" defer></script>
+  <script src="/js/orders-tracker.js" defer></script>
+  <script src="/js/catalog.js" defer></script>
+  <script src="/js/inquiry.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>

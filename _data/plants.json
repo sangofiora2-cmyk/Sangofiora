@@ -1147,7 +1147,7 @@
       "title": "Foliage",
       "heading": "Foliage Plants",
       "tagline": "Lush statement greens for every room",
-      "banner": "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?q=80&w=1200&auto=format&fit=crop",
+      "banner": "/images/products/calathea-orbifolia-120cm.jpg",
       "count": 27
     },
     {
@@ -1155,7 +1155,7 @@
       "title": "Palms",
       "heading": "Palm Trees",
       "tagline": "Resort-style palms, potted & ready",
-      "banner": "https://images.unsplash.com/photo-1545241047-6083a3684587?q=80&w=1200&auto=format&fit=crop",
+      "banner": "/images/products/areca-palm-tree-180cm.jpg",
       "count": 13
     },
     {
@@ -1163,7 +1163,7 @@
       "title": "Trees",
       "heading": "Indoor Trees",
       "tagline": "Sculptural trees as natural focal points",
-      "banner": "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1200&auto=format&fit=crop",
+      "banner": "/images/products/fiddle-leaf-fig-180cm.jpg",
       "count": 33
     },
     {
@@ -1171,7 +1171,7 @@
       "title": "Flowering",
       "heading": "Flowering Plants",
       "tagline": "Colour and fragrance, delivered",
-      "banner": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
+      "banner": "/images/products/rose-plant-white-colour-90cm.jpg",
       "count": 3
     }
   ],

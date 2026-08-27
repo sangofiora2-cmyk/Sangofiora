@@ -56,10 +56,10 @@ for (const p of raw) {
 }
 
 const COLLECTIONS_LIST = [
-  { key: 'foliage', title: 'Foliage', heading: 'Foliage Plants', tagline: 'Lush statement greens for every room', banner: '/images/collection-foliage.svg' },
-  { key: 'palms', title: 'Palms', heading: 'Palm Trees', tagline: 'Resort-style palms, potted & ready', banner: '/images/collection-palms.svg' },
-  { key: 'trees', title: 'Trees', heading: 'Indoor Trees', tagline: 'Sculptural trees as natural focal points', banner: '/images/collection-trees.svg' },
-  { key: 'flowering', title: 'Flowering', heading: 'Flowering Plants', tagline: 'Colour and fragrance, delivered', banner: '/images/collection-flowering.svg' }
+  { key: 'foliage', title: 'Foliage', heading: 'Foliage Plants', tagline: 'Lush statement greens for every room', banner: '/images/products/calathea-orbifolia-120cm.jpg' },
+  { key: 'palms', title: 'Palms', heading: 'Palm Trees', tagline: 'Resort-style palms, potted & ready', banner: '/images/products/areca-palm-tree-180cm.jpg' },
+  { key: 'trees', title: 'Trees', heading: 'Indoor Trees', tagline: 'Sculptural trees as natural focal points', banner: '/images/products/fiddle-leaf-fig-180cm.jpg' },
+  { key: 'flowering', title: 'Flowering', heading: 'Flowering Plants', tagline: 'Colour and fragrance, delivered', banner: '/images/products/rose-plant-white-colour-90cm.jpg' }
 ];
 for (const c of COLLECTIONS_LIST) {
   c.count = products.filter(p => p.category === c.title).length;

@@ -2,7 +2,7 @@
   data-category="{{ p.category }}" data-price="{{ p.price }}" data-rating="{{ p.rating }}" data-discount="{{ p.discount }}" data-name="{{ p.name }}">
   
   <a href="/products/{{ p.slug }}/" class="relative block aspect-square overflow-hidden bg-surface-container">
-    <img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy" decoding="async" width="300" height="300"
+    <img src="{{ p.image }}" alt="{{ p.name }}" {% if isAboveFold %}decoding="async" fetchpriority="high"{% else %}loading="lazy" decoding="async"{% endif %} width="300" height="300"
       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
     {% if p.discount %}
     <span class="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">SAVE {{ p.discount }}%</span>

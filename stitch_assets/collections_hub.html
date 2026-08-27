@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Collections - Sango Plants</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#6b1d3d",
+                        "error": "#ba1a1a",
+                        "surface-container": "#efeeec",
+                        "on-tertiary-fixed": "#3e001d",
+                        "moss-muted": "#4E7051",
+                        "charcoal-text": "#1A1A1A",
+                        "on-surface-variant": "#41493E",
+                        "on-secondary-fixed": "#261a00",
+                        "tertiary-fixed": "#ffd9e2",
+                        "surface": "#faf9f7",
+                        "background": "#faf9f7",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb1c8",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#acf4a4",
+                        "inverse-surface": "#2f3130",
+                        "amber-gold": "#FFBF00",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1b5e20",
+                        "tertiary-container": "#883454",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "surface-variant": "#e3e2e0",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f4f3f1",
+                        "primary-fixed-dim": "#91d78a",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "surface-dim": "#dadad8",
+                        "surface-container-high": "#e9e8e6",
+                        "ivory-base": "#F9F8F6",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#ffaec6",
+                        "on-tertiary-fixed-variant": "#7a2949",
+                        "deep-forest": "#1B5E20",
+                        "surface-tint": "#2a6b2c",
+                        "secondary-container": "#ffbf00",
+                        "inverse-on-surface": "#f1f1ef",
+                        "surface-bright": "#faf9f7",
+                        "primary": "#00450d",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-surface": "#1a1c1b",
+                        "outline": "#717a6d",
+                        "on-primary-fixed": "#002203",
+                        "on-background": "#1a1c1b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdfa0",
+                        "on-primary-container": "#90d689",
+                        "on-secondary-container": "#6d5000",
+                        "secondary": "#795900",
+                        "inverse-primary": "#91d78a",
+                        "outline-variant": "#c0c9bb",
+                        "on-secondary-fixed-variant": "#5c4300"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "headline-sm": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card-hover:hover .bento-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-amber-gold selection:text-deep-forest">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop h-20">
+<a class="font-headline-lg text-headline-lg font-bold text-deep-forest dark:text-primary-fixed" href="#">Sango Plants</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-md text-label-md text-on-surface dark:text-on-surface-variant hover:text-amber-gold transition-colors duration-300" href="#">Shop All</a>
+<a class="font-label-md text-label-md text-amber-gold border-b-2 border-amber-gold pb-1 transition-colors duration-300" href="#">Our Nursery</a>
+<a class="font-label-md text-label-md text-on-surface dark:text-on-surface-variant hover:text-amber-gold transition-colors duration-300" href="#">Rare Species</a>
+<a class="font-label-md text-label-md text-on-surface dark:text-on-surface-variant hover:text-amber-gold transition-colors duration-300" href="#">Sustainability</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-primary dark:text-primary-fixed-dim hover:text-amber-gold transition-colors duration-300 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim hover:text-amber-gold transition-colors duration-300 cursor-pointer active:scale-95 transition-transform relative">
+<span class="material-symbols-outlined text-2xl">shopping_cart</span>
+<span class="absolute -top-1 -right-2 bg-amber-gold text-on-secondary-fixed text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">2</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim hover:text-amber-gold transition-colors duration-300 cursor-pointer active:scale-95 transition-transform hidden md:block">
+<span class="material-symbols-outlined text-2xl">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="bg-deep-forest text-on-primary py-section-gap px-margin-mobile md:px-margin-desktop text-center">
+<div class="max-w-4xl mx-auto space-y-6">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-bold">Curated Collections</h1>
+<p class="font-headline-sm text-headline-sm text-primary-fixed-dim italic">76 Botanical Designs · 4 Curated Spaces</p>
+<p class="font-body-lg text-body-lg text-surface-container-low max-w-2xl mx-auto opacity-90">Discover our meticulously selected range of premium botanicals, designed to bring life, elegance, and tranquility to your bespoke interiors.</p>
+</div>
+</section>
+<!-- Bento Grid Collections -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[400px]">
+<!-- Collection 1: Foliage (Spans 8 columns) -->
+<div class="md:col-span-8 relative rounded-xl overflow-hidden group bento-card-hover cursor-pointer shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center bento-image transition-transform duration-700 ease-out" data-alt="Close-up detail of lush green Fiddle Leaf Fig leaves, high-end botanical texture, soft natural lighting. Luxury plant store asset. Deep forest greens with soft white highlights. Serene, natural mood." style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1W0HrU7d8He5TcpnY0L1zVjtrqzYZ5CJuMUKb5i8XiHFaKkibzCZ06uVEnpLT7inrzQCKtFhtsist2Ii937ipMeTpjK4-OjlyZB48T4jEzzSxNSk3YSjeO1OJ_fiBeCXTzGjmMBQLNCJjQSqFEy1v8dFGIQ8PcUknDUNg0LrdXri5u2pVZu60NCXlMze_2Cqbfc5aZ41qlY0qUMOWHe8lUs3huiNRNwE6Pnhzq_iT1jVqWFb2AuBRdtTtAg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/90 via-deep-forest/40 to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="self-end bg-amber-gold text-on-secondary-fixed font-label-md text-label-md px-4 py-2 rounded-full font-bold shadow-md">18 Varieties</div>
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-primary">Foliage</h2>
+<p class="font-body-lg text-body-lg text-surface-container-low">Lush textures for every corner.</p>
+<button class="mt-4 bg-transparent border border-on-primary text-on-primary font-label-md text-label-md uppercase tracking-wider py-3 px-8 rounded hover:bg-on-primary hover:text-deep-forest transition-colors duration-300 w-fit">Explore Collection</button>
+</div>
+</div>
+</div>
+<!-- Collection 2: Resort Palms (Spans 4 columns) -->
+<div class="md:col-span-4 relative rounded-xl overflow-hidden group bento-card-hover cursor-pointer shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center bento-image transition-transform duration-700 ease-out" data-alt="Tall elegant Resort Palm tree in a modern minimalist planter in a bright, airy living room. Light mode aesthetic, warm ivory tones, soft luxurious lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIZC7NLXujLzcTUk_nGQmQt1zDwIIfigt1AxTys-pUghcoyhzZNg-V3IM8WPAjL7CXHHt-ypR3xpBbAiZYLIKMlEN5gvjGf1ojb5_uG6-0w6pTLa1cdTnVd9YLepJ5fD7zmC0MFg9k8MC0ik7C4hIGyX33OyFQNRnwIeY1cDorRyWKCny9sMDxYAnDCkH-uJDrvZqvS5iz89fYKHeyuBLykeBsz65B85uDUkHrSDdqJxMnzhdpbYYIwklgXUWmJoxHqLvR2ih3OyQE')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/90 via-deep-forest/30 to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="self-end bg-amber-gold text-on-secondary-fixed font-label-md text-label-md px-4 py-2 rounded-full font-bold shadow-md">12 Varieties</div>
+<div class="space-y-4">
+<h2 class="font-headline-sm text-headline-sm text-on-primary">Resort Palms</h2>
+<p class="font-body-md text-body-md text-surface-container-low">Tropical elegance for your home.</p>
+<button class="mt-2 text-amber-gold font-label-md text-label-md uppercase tracking-wider flex items-center hover:text-on-primary transition-colors duration-300">
+                                Explore <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Collection 3: Statement Trees (Spans 6 columns) -->
+<div class="md:col-span-6 relative rounded-xl overflow-hidden group bento-card-hover cursor-pointer shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center bento-image transition-transform duration-700 ease-out" data-alt="Large majestic Olive Tree indoors in a textured terracotta pot against a clean white wall. Minimalist luxury styling, natural daylight casting soft shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtCddjnWsgegn5HG9Vr89i4VzhIe3GAvH522HDu1Y8p-VCj0-3GscW3lO96czHQ8trd3fYeUygIIYGp47NINPeYiv0YGqWmAVF7EIrQEgixNkudMXuX34SVDlXKv3q4rLFhxhCrXWnvjrgYSEzhHeSv7VU-37Di20v_dp_4yZ3PJrp7JlK0jCmTtEFZBigjOQ57p_5MFlndGQwYBNWSDBdnp3O8c87_d-UuKwgi9unL2ISusNtywQgmk1lRcZqLXWQSMnGsyJEkx-I')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/90 via-deep-forest/40 to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="self-end bg-amber-gold text-on-secondary-fixed font-label-md text-label-md px-4 py-2 rounded-full font-bold shadow-md">24 Varieties</div>
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-primary">Statement Trees</h2>
+<p class="font-body-lg text-body-lg text-surface-container-low">Grandeur in every leaf.</p>
+<button class="mt-4 bg-amber-gold text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider py-3 px-8 rounded hover:bg-secondary-fixed transition-colors duration-300 w-fit">Explore Collection</button>
+</div>
+</div>
+</div>
+<!-- Collection 4: Flowering (Spans 6 columns) -->
+<div class="md:col-span-6 relative rounded-xl overflow-hidden group bento-card-hover cursor-pointer shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center bento-image transition-transform duration-700 ease-out" data-alt="Vibrant blooming white orchid in a sleek dark ceramic pot. Elegant, modern luxury botanical photography. Soft contrast lighting highlighting the delicate petals." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDG0cnAh7hgoIQPfgKSyupUjimDemgy9yyEk5_H2FkHO3yBFCVZcViS2IjUtyW2vVIvChboqzl3KDphSIShzf5AUn09rv7PDzUIuD4WaQzjKovHKOLLSo2dC1Lw8hChoRbocJI6flCiDf13lyhO_JxuFO6fnjHElPrBcpRLIP4vpbHgxJun2SrWk3rrNt0PaaOdTjQLYLYITY7exxdBfn1com8xXuxk0NxGWaORvk5UvurXyPioaPD2ehKI3LPhBa4ov2TaI6qwGLwi')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-forest/90 via-deep-forest/40 to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="self-end bg-amber-gold text-on-secondary-fixed font-label-md text-label-md px-4 py-2 rounded-full font-bold shadow-md">22 Varieties</div>
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-primary">Flowering</h2>
+<p class="font-body-lg text-body-lg text-surface-container-low">Natural blooms to brighten your space.</p>
+<button class="mt-4 bg-transparent border border-amber-gold text-amber-gold font-label-md text-label-md uppercase tracking-wider py-3 px-8 rounded hover:bg-amber-gold hover:text-on-secondary-fixed transition-colors duration-300 w-fit">Explore Collection</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Block: Special Discounts -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-ivory-base border-t border-outline-variant/30">
+<div class="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-gutter items-center">
+<div class="space-y-6">
+<div class="inline-flex items-center space-x-2 text-amber-gold font-label-md text-label-md uppercase tracking-widest">
+<span class="material-symbols-outlined text-lg">local_offer</span>
+<span>Today's Special</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-deep-forest">Exclusive Curations</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Elevate your sanctuary with our limited-time offers on select grand specimens. Expertly nurtured for the discerning collector.</p>
+<div class="bg-surface p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col sm:flex-row items-center gap-6 mt-8">
+<div class="flex-shrink-0 w-32 h-32 rounded-md overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Small potted rare variegated Monstera plant, luxury studio lighting, light mode aesthetic, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxoWd9z9bEec3HJemGKp-o8-JQwSyrXpsJe4xVtUJR0uJuiixFFhycAH2VJfy93wbRWGsQQUwCMfjfV6UGZjjygIA0CQVSdz3K_FiqVSTNtmLaFc139nfjSjXtrChTL6MumwRd7IHJJ9eIbrz21S9H4pstntixJfyyfL9du2AaQqNNCj79-YWzn3o10vD3Shuxp8W9Ku9HkVsyqQEp87fwrX7BDho7YYGt-VM4HMph2Yv552G2DRemu0MCvp2ad7RBF72ltYtexvrN"/>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline-sm text-headline-sm text-deep-forest">The Rare Aroid Bundle</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Includes 3 hand-selected rare varieties.</p>
+<div class="flex items-center space-x-4 mt-2">
+<span class="text-error font-headline-sm text-headline-sm line-through opacity-70">$450</span>
+<span class="text-deep-forest font-headline-sm text-headline-sm font-bold">$385</span>
+</div>
+</div>
+</div>
+<button class="mt-8 bg-deep-forest text-on-primary font-label-md text-label-md uppercase tracking-wider py-4 px-10 rounded hover:bg-primary-container transition-colors duration-300 shadow-md">
+                        Shop Offers
+                    </button>
+</div>
+<div class="hidden md:block relative h-[600px] rounded-xl overflow-hidden shadow-lg">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Luxurious modern living room bathed in natural light, featuring several large, healthy indoor plants in designer gold and white pots. Deep green and amber accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXV17XglnHqhdcl2XEMCms6R4Y5YBk1rkum2t1irYuqKNR0F-SnxtKy3xW5yepzuTDRHKMjOmndhTO-aIaQE0cwB6fTWfinQvWVqGmg_DZfnsTnoCPkcJ8eBtL_oFOSGk9lHwWswa0VKMSh8SuF2vTwC4pHwjQE8aYXU-8CvkgyB5n2s56k3uZdg12JVTQaQGXlHVP44NIiCzjxTvAltVtQpCy4uzGkY_NjUd19GoUeYOF6FAL-7MlH8Zl58cdvU-Qi_0K7S8e-ICN"/>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-section-gap pb-base bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-12">
+<div class="md:col-span-4 space-y-4">
+<span class="font-headline-sm text-headline-sm text-deep-forest dark:text-primary-fixed block">Sango Plants</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant max-w-xs">Cultivating Botanical Excellence for the modern, mindful home.</p>
+</div>
+<div class="md:col-span-8 flex flex-wrap gap-8 justify-between md:justify-end">
+<div class="flex flex-col space-y-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-amber-gold transition-colors duration-200 underline-offset-4 hover:underline" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-amber-gold transition-colors duration-200 underline-offset-4 hover:underline" href="#">Shipping Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-amber-gold transition-colors duration-200 underline-offset-4 hover:underline" href="#">Return Policy</a>
+</div>
+<div class="flex flex-col space-y-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-amber-gold transition-colors duration-200 underline-offset-4 hover:underline" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-amber-gold transition-colors duration-200 underline-offset-4 hover:underline" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center text-center">
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant text-sm">© 2024 Sango Plants. Cultivating Botanical Excellence.</p>
+</div>
+</footer>
+</body></html>

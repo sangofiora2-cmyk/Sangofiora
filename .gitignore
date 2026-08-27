@@ -21,3 +21,6 @@ src/images/products/
 # OS Files
 .DS_Store
 Thumbs.db
+
+# Stitch preview assets
+stitch_assets/*.png

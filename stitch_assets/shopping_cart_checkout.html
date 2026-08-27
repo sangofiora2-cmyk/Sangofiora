@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sango Plants - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdfa0",
+                        "outline-variant": "#c0c9bb",
+                        "on-error": "#ffffff",
+                        "surface": "#faf9f7",
+                        "on-primary": "#ffffff",
+                        "secondary": "#795900",
+                        "inverse-on-surface": "#f1f1ef",
+                        "surface-tint": "#2a6b2c",
+                        "on-surface-variant": "#41493E",
+                        "inverse-surface": "#2f3130",
+                        "primary-fixed-dim": "#91d78a",
+                        "surface-container-high": "#e9e8e6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffd9e2",
+                        "tertiary": "#6b1d3d",
+                        "charcoal-text": "#1A1A1A",
+                        "tertiary-container": "#883454",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-primary-fixed": "#002203",
+                        "on-surface": "#1a1c1b",
+                        "ivory-base": "#F9F8F6",
+                        "surface-container-low": "#f4f3f1",
+                        "outline": "#717a6d",
+                        "surface-bright": "#faf9f7",
+                        "on-tertiary-container": "#ffaec6",
+                        "deep-forest": "#1B5E20",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "primary-fixed": "#acf4a4",
+                        "on-tertiary": "#ffffff",
+                        "amber-gold": "#FFBF00",
+                        "background": "#faf9f7",
+                        "tertiary-fixed-dim": "#ffb1c8",
+                        "surface-container": "#efeeec",
+                        "on-tertiary-fixed-variant": "#7a2949",
+                        "on-tertiary-fixed": "#3e001d",
+                        "moss-muted": "#4E7051",
+                        "inverse-primary": "#91d78a",
+                        "surface-variant": "#e3e2e0",
+                        "primary": "#00450d",
+                        "on-secondary-fixed": "#261a00",
+                        "secondary-container": "#ffbf00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-background": "#1a1c1b",
+                        "surface-dim": "#dadad8",
+                        "on-secondary-container": "#6d5000",
+                        "primary-container": "#1b5e20",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#90d689"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar (Transactional, minimalist version without links) -->
+<header class="bg-surface/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-base max-w-[1440px] mx-auto h-20">
+<div class="font-display-lg text-headline-lg font-bold text-deep-forest cursor-pointer">
+                SANGO PLANTS
+            </div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-deep-forest cursor-pointer">lock</span>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Progress Bar -->
+<div class="mb-16 mt-8">
+<h1 class="font-headline-lg text-headline-lg text-center text-deep-forest mb-8">Secure Checkout</h1>
+<div class="flex items-center justify-between max-w-3xl mx-auto relative">
+<!-- Line background -->
+<div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-[1px] bg-outline-variant z-0"></div>
+<!-- Line progress (25%) -->
+<div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-[2px] bg-amber-gold z-0"></div>
+<!-- Step 1 (Active) -->
+<div class="relative z-10 flex flex-col items-center group">
+<div class="w-8 h-8 rounded-full bg-amber-gold text-on-primary flex items-center justify-center font-label-md text-label-md mb-2 shadow-sm">1</div>
+<span class="font-label-sm text-label-sm text-deep-forest font-semibold uppercase tracking-wider">Cart Review</span>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant text-outline flex items-center justify-center font-label-md text-label-md mb-2">2</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider hidden md:block">Shipping Address</span>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant text-outline flex items-center justify-center font-label-md text-label-md mb-2">3</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider hidden md:block">Payment Method</span>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant text-outline flex items-center justify-center font-label-md text-label-md mb-2">4</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider hidden md:block">Order Invoice</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
+<!-- Left Column: Cart Items & Promo -->
+<div class="lg:col-span-7 flex flex-col gap-8">
+<!-- Cart Items Section -->
+<section class="bg-ivory-base p-6 md:p-8 rounded-xl border border-outline-variant/30 shadow-sm">
+<h2 class="font-headline-sm text-headline-sm text-deep-forest border-b border-outline-variant/30 pb-4 mb-6">Your Cart (1)</h2>
+<!-- Item -->
+<div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-4">
+<div class="w-full sm:w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant/20">
+<img alt="Majestic Fiddle Leaf Fig" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XUPwJFJWIOWZhKbhnwcpJF4eK4re9Our_apDWkb_9Kumyj5AnRS4awcE2TjdG6Qy4teoWm5kSzlpspYK7o1NbL3m2xgQA4UMQtAjPamgCTSttJbSx7BqJQQz80XpnpwVbcGBtO1Uc2uWp9Sq02zYK6JrWuYX-glqkqHubkQjdXYOE31ERmqoI7VpgTdsKTPmsYYeg4E0cz7ySoe5A9rYHyT6xtrFMqzcTrUJ60V1VhObegRw1MAfF3LZL5"/>
+</div>
+<div class="flex-grow flex flex-col gap-2">
+<div class="flex justify-between items-start w-full">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-deep-forest text-xl">Majestic Fiddle Leaf Fig</h3>
+<p class="font-body-md text-body-md text-moss-muted">Extra Large • Approx 5ft</p>
+</div>
+<span class="font-headline-sm text-headline-sm text-deep-forest text-xl">₹8,500</span>
+</div>
+<div class="inline-flex items-center gap-1 bg-secondary-fixed/20 text-secondary-container px-2 py-1 rounded text-xs uppercase tracking-wider font-semibold w-fit mt-1">
+<span class="material-symbols-outlined text-[14px]">local_florist</span>
+                                Premium Pot Included
+                            </div>
+<div class="flex justify-between items-center mt-4 w-full">
+<!-- Quantity Controls -->
+<div class="flex items-center border border-outline-variant rounded-md overflow-hidden bg-surface">
+<button aria-label="Decrease quantity" class="px-3 py-1 text-deep-forest hover:bg-surface-container transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="px-4 py-1 font-label-md text-label-md text-deep-forest border-x border-outline-variant/50">1</span>
+<button aria-label="Increase quantity" class="px-3 py-1 text-deep-forest hover:bg-surface-container transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<button class="text-error hover:text-on-error-container transition-colors flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wide focus:outline-none">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                    Remove
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Promo Code Section -->
+<section class="bg-ivory-base p-6 rounded-xl border border-outline-variant/30 shadow-sm">
+<h3 class="font-label-md text-label-md text-deep-forest uppercase tracking-wider mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">redeem</span>
+                        Have a Promo Code?
+                    </h3>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface border-outline-variant text-deep-forest focus:border-amber-gold focus:ring-1 focus:ring-amber-gold rounded-md font-body-md text-body-md px-4 py-3 placeholder-outline" placeholder="Enter code here" type="text"/>
+<button class="bg-deep-forest hover:bg-primary-container text-on-primary px-6 py-3 rounded-md font-label-md text-label-md uppercase tracking-wider transition-colors focus:outline-none focus:ring-2 focus:ring-amber-gold focus:ring-offset-2">
+                            Apply
+                        </button>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary Sidebar -->
+<div class="lg:col-span-5">
+<div class="bg-surface-container-low p-6 md:p-8 rounded-xl border border-outline-variant/30 sticky top-28 shadow-sm">
+<h2 class="font-headline-sm text-headline-sm text-deep-forest border-b border-outline-variant/30 pb-4 mb-6">Order Summary</h2>
+<div class="flex flex-col gap-4 mb-6">
+<div class="flex justify-between items-center text-moss-muted">
+<span>Subtotal (1 item)</span>
+<span class="font-semibold text-deep-forest">₹8,500</span>
+</div>
+<div class="flex justify-between items-center text-moss-muted">
+<span>Coupon Discount</span>
+<span class="text-amber-gold">-₹0</span>
+</div>
+<div class="flex justify-between items-center text-moss-muted">
+<span>Shipping</span>
+<span class="text-primary-fixed-dim uppercase tracking-wide font-semibold text-sm">Free</span>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-4 mb-8">
+<div class="flex justify-between items-end">
+<span class="font-headline-sm text-headline-sm text-deep-forest text-xl">Total Net Payable</span>
+<span class="font-headline-sm text-headline-sm text-deep-forest text-3xl">₹8,500</span>
+</div>
+<p class="text-right text-xs text-outline mt-1">Inclusive of all taxes</p>
+</div>
+<button class="w-full bg-deep-forest hover:bg-primary-container text-on-primary py-4 rounded-md font-label-md text-label-md uppercase tracking-widest transition-colors flex justify-center items-center gap-2 mb-6 shadow-md focus:outline-none focus:ring-2 focus:ring-amber-gold focus:ring-offset-2">
+                        Proceed to Shipping
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Trust Badges -->
+<div class="flex flex-col gap-4 border-t border-outline-variant/30 pt-6">
+<div class="flex items-center gap-3 justify-center text-deep-forest">
+<span class="material-symbols-outlined text-amber-gold" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-md text-label-md uppercase tracking-wide text-xs">Razorpay Secured Checkout</span>
+</div>
+<div class="flex items-center gap-3 justify-center text-deep-forest">
+<span class="material-symbols-outlined text-amber-gold" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-md text-label-md uppercase tracking-wide text-xs">Secure SSL Encryption</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full mt-section-gap py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1 mb-8 md:mb-0">
+<div class="font-display-lg text-headline-sm text-secondary-container mb-4">SANGO PLANTS</div>
+<p class="text-on-primary/80 text-sm font-label-sm">© 2024 SANGO PLANTS. CULTIVATING BOTANICAL EXCELLENCE.</p>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-primary/80 hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md text-sm" href="#">Sustainability</a>
+<a class="text-on-primary/80 hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md text-sm" href="#">Shipping &amp; Returns</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-primary/80 hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md text-sm" href="#">Privacy Policy</a>
+<a class="text-on-primary/80 hover:text-secondary-fixed transition-colors cursor-pointer font-body-md text-body-md text-sm" href="#">Terms of Service</a>
+</div>
+<div class="flex gap-4 items-start justify-start md:justify-end">
+<span class="material-symbols-outlined text-on-primary/80 hover:text-secondary-fixed cursor-pointer transition-colors">mail</span>
+<span class="material-symbols-outlined text-on-primary/80 hover:text-secondary-fixed cursor-pointer transition-colors">phone</span>
+</div>
+</div>
+</footer>
+</body></html>

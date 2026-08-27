@@ -68,8 +68,16 @@ permalink: /products/
   <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-10">
     <div id="all-products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
       {% for p in plants.products %}
+        {% set isAboveFold = loop.index <= 8 %}
         {% include 'partials/product-card.html' %}
       {% endfor %}
+    </div>
+
+    <!-- Load More Button (prevents 76-card Chrome socket queuing) -->
+    <div id="load-more-wrap" class="text-center mt-12 hidden">
+      <button type="button" id="load-more-btn" class="bg-deep-forest hover:bg-primary-container text-white px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+        Load More Products (<span id="load-more-count">0</span> remaining)
+      </button>
     </div>
 
     <!-- Empty State if filters yield 0 -->
