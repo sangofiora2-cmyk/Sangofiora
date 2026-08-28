@@ -1,21 +1,6 @@
 {
   "products": [
     {
-      "slug": "calathea-orbifolia-120cm",
-      "name": "Calathea Orbifolia",
-      "variant": "",
-      "category": "Foliage",
-      "size": "120cm",
-      "potIncluded": true,
-      "price": 3856,
-      "mrp": 5100,
-      "discount": 24,
-      "rating": 4.5,
-      "reviews": 237,
-      "image": "/images/products/calathea-orbifolia-120cm.jpg",
-      "description": "Calathea Orbifolia standing approximately 120cm tall, delivered in a decorative pot. A lush statement plant that thrives in bright, indirect light and instantly elevates living rooms, bedrooms and office corners."
-    },
-    {
       "slug": "rose-plant-white-colour-90cm",
       "name": "Rose Plant",
       "variant": "White",

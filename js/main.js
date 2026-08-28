@@ -78,7 +78,50 @@
     });
   }
 
+  
+  // ---------- Purge Deleted Products Across Site ----------
+  function purgeDeletedProducts() {
+    var deletedSlugs = JSON.parse(localStorage.getItem('sango_deleted_slugs') || '["calathea-orbifolia-120cm"]');
+    if (deletedSlugs.indexOf('calathea-orbifolia-120cm') === -1) {
+      deletedSlugs.push('calathea-orbifolia-120cm');
+      localStorage.setItem('sango_deleted_slugs', JSON.stringify(deletedSlugs));
+    }
+
+    function applyPurge(slugs) {
+      if (!slugs || !slugs.length) return;
+      slugs.forEach(function (slug) {
+        document.querySelectorAll('[data-slug="' + slug + '"]').forEach(function (el) {
+          var card = el.closest('article, .product-card') || el;
+          if (card && card.parentNode) card.remove();
+        });
+        document.querySelectorAll('a[href*="/products/' + slug + '/"]').forEach(function (link) {
+          var card = link.closest('article, .product-card') || link.closest('.grid > div');
+          if (card && card.parentNode) card.remove();
+        });
+      });
+    }
+
+    applyPurge(deletedSlugs);
+
+    if (window.SangoSupabase && window.SUPABASE_CONFIGURED) {
+      try {
+        window.SangoSupabase.from('products').select('slug, is_active').then(function (res) {
+          if (res.data) {
+            res.data.forEach(function (p) {
+              if (!p.is_active && deletedSlugs.indexOf(p.slug) === -1) {
+                deletedSlugs.push(p.slug);
+              }
+            });
+            localStorage.setItem('sango_deleted_slugs', JSON.stringify(deletedSlugs));
+            applyPurge(deletedSlugs);
+          }
+        }).catch(function () {});
+      } catch (e) {}
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    purgeDeletedProducts();
     initScrollAnimations();
     initScrollToTop();
     initHeaderShadow();

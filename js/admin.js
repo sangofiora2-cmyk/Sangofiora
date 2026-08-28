@@ -334,8 +334,19 @@
     // Delete product
     var delBtn = e.target.closest('[data-delete-product]');
     if (delBtn) {
+      var pid = delBtn.dataset.deleteProduct;
+      var pObj = allProducts.find(function (p) { return p.id === pid; });
       if (!confirm('Are you sure you want to permanently delete this product?')) return;
-      sb.from('products').delete().eq('id', delBtn.dataset.deleteProduct).then(function (res) {
+
+      if (pObj && pObj.slug) {
+        var deletedSlugs = JSON.parse(localStorage.getItem('sango_deleted_slugs') || '[]');
+        if (deletedSlugs.indexOf(pObj.slug) === -1) {
+          deletedSlugs.push(pObj.slug);
+          localStorage.setItem('sango_deleted_slugs', JSON.stringify(deletedSlugs));
+        }
+      }
+
+      sb.from('products').delete().eq('id', pid).then(function (res) {
         if (res.error) { toast('Error: ' + res.error.message); return; }
         toast('Product deleted 🗑️');
         loadProducts();
