@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+  <script>window.SANGO_PRODUCTS = {{ plants.products | dump | safe }};</script>
 </head>
 <body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
   {% include 'partials/header.html' %}
@@ -37,6 +38,7 @@
   <script src="/js/orders-tracker.js" defer></script>
   <script src="/js/catalog.js" defer></script>
   <script src="/js/inquiry.js" defer></script>
+  <script src="/js/search.js" defer></script>
   <script src="/js/main.js" defer></script>
 </body>
 </html>
