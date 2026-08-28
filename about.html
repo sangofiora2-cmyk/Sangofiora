@@ -1,70 +1,201 @@
 ---
 layout: base
-title: Our Story | Sango Fiora
-description: Sango Fiora — premium handcrafted artificial plants & trees for homes, offices, salons and indoor spaces across India.
+title: Our Story | Sango Fiora — Artisanal Artificial Plants
+description: Sango Fiora — premium handcrafted artificial plants & trees for homes, offices, salons and luxury spaces across India. Based in Salem, Tamil Nadu.
 ---
 
-<main class="bg-background min-h-screen pb-20 pt-[80px]">
+<main class="bg-[#FAF9F5] min-h-screen pb-24 pt-[80px]">
   
-  <!-- Premium Hero Banner -->
-  <section class="relative bg-deep-forest text-on-primary py-20 md:py-24 overflow-hidden border-b border-amber-gold/20">
-    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    <div class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop text-center relative z-10">
-      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-bold text-amber-gold uppercase tracking-widest mb-3">
+  <!-- Premium Hero Section with Parallax Background -->
+  <section class="relative bg-deep-forest text-on-primary py-24 sm:py-32 overflow-hidden border-b border-amber-gold/20">
+    <!-- Background Image Overlay -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25 scale-105 transition-transform duration-1000" 
+         style="background-image: url('https://images.unsplash.com/photo-1545241047-6083a3684587?q=80&w=1600&auto=format&fit=crop');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-deep-forest via-deep-forest/80 to-transparent"></div>
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-amber-gold/40 text-xs sm:text-sm font-bold text-amber-gold uppercase tracking-widest mb-6 shadow-lg">
+        <span class="w-2 h-2 rounded-full bg-amber-gold animate-pulse"></span>
         Artisanal Greenery Studio · Salem, Tamil Nadu
-      </span>
-      <h1 class="font-headline-lg text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white tracking-tight">Our Story</h1>
-      <p class="text-white/80 text-base sm:text-lg max-w-3xl mx-auto font-body-md leading-relaxed">
-        Crafting realistic, maintenance-free artificial plants and trees that bring natural warmth and architectural luxury to modern Indian spaces.
+      </div>
+      <h1 class="font-headline-lg text-4xl sm:text-6xl md:text-7xl font-bold mb-6 text-white tracking-tight leading-tight">
+        Redefining Living Spaces with <br class="hidden sm:inline"><span class="text-amber-gold italic">Everlasting Greenery</span>
+      </h1>
+      <p class="text-white/85 text-base sm:text-xl max-w-3xl mx-auto font-body-md leading-relaxed drop-shadow">
+        We handcraft ultra-realistic, zero-maintenance artificial plants and statement trees that bring natural warmth, serene vibes, and architectural luxury to modern Indian interiors.
       </p>
     </div>
   </section>
 
-  <!-- Story Content & Stat Counters -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 md:px-0 space-y-12 text-on-surface-variant text-base sm:text-lg leading-relaxed font-body-md">
+  <!-- Story & Vision: Split Grid -->
+  <section class="py-20 max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       
-      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-outline-variant/30 shadow-sm space-y-6">
-        <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-deep-forest first-letter:float-left first-letter:mr-3">
-          Sango Fiora was born out of a passion for realistic interior aesthetics. Based in Salem, Tamil Nadu, we specialize in high-quality artificial plants and trees designed to look natural, feel close to live greenery, and remain vibrant for years without any maintenance or watering.
-        </p>
-        <p>
-          Every piece in our collection is carefully handcrafted with high-grade foliage, realistic stem textures, and premium decorative pots included. Whether you are decorating a cosy living room, setting up an office space, styling a salon, or outfitting a retail store, Sango Fiora brings everlasting greenery to your interiors.
-        </p>
-      </div>
+      <!-- Left: Visual Image Collage -->
+      <div class="lg:col-span-6 relative">
+        <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop" 
+               alt="Sango Fiora Botanical Studio Setup" 
+               class="w-full h-[450px] sm:h-[520px] object-cover hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-white">
+            <span class="text-amber-gold text-xs font-bold uppercase tracking-widest">Handcrafted Excellence</span>
+            <h3 class="text-xl font-bold font-headline-sm mt-1">Designed in Salem, Delivered Pan-India</h3>
+          </div>
+        </div>
 
-      <!-- Key Stat Counters -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
-        <div class="text-center p-8 bg-white rounded-3xl border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div class="text-4xl mb-3">🌿</div>
-          <h3 class="font-headline-lg text-4xl font-bold text-deep-forest mb-1">{{ plants.products.length }}+</h3>
-          <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Botanical Designs</p>
-        </div>
-        <div class="text-center p-8 bg-white rounded-3xl border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div class="text-4xl mb-3">⭐</div>
-          <h3 class="font-headline-lg text-4xl font-bold text-deep-forest mb-1">4.9 / 5</h3>
-          <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Customer Rating</p>
-        </div>
-        <div class="text-center p-8 bg-white rounded-3xl border border-outline-variant/30 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <div class="text-4xl mb-3">🚚</div>
-          <h3 class="font-headline-lg text-4xl font-bold text-deep-forest mb-1">24 Hours</h3>
-          <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Dispatch Guarantee</p>
+        <!-- Floating Glassmorphic Badge -->
+        <div class="absolute -bottom-6 -right-4 sm:right-6 z-20 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-outline-variant/30 shadow-2xl max-w-xs hidden sm:block">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-amber-gold/20 text-deep-forest flex items-center justify-center text-2xl font-bold">🪴</div>
+            <div>
+              <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Pot Included Always</p>
+              <p class="text-sm font-bold text-deep-forest">Ready to Display on Unboxing</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Commercial & Custom Support Banner -->
-      <div class="bg-deep-forest text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-amber-gold/30 text-center space-y-4">
-        <h3 class="font-headline-sm text-2xl font-bold text-amber-gold">Commercial &amp; Custom Orders</h3>
-        <p class="text-white/80 text-sm sm:text-base max-w-2xl mx-auto">
-          Whether you need a single statement palm or bulk supply for commercial interior projects, our design team is ready to assist with custom quotes and tax invoicing.
-        </p>
-        <div class="pt-2">
-          <a href="/contact/" class="inline-block bg-amber-gold hover:bg-amber-400 text-deep-forest px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider shadow-lg transition-all transform hover:scale-105">
-            Get in Touch with Our Team →
-          </a>
+      <!-- Right: Story Narrative -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-block">
+          <span class="font-label-sm text-xs font-bold text-amber-gold uppercase tracking-widest bg-amber-gold/10 px-3 py-1 rounded-md">Our Journey</span>
         </div>
+        <h2 class="font-headline-lg text-3xl sm:text-4xl font-bold text-deep-forest leading-tight">
+          Where Natural Botanical Beauty Meets Modern Convenience
+        </h2>
+        
+        <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed font-body-md">
+          Sango Fiora was founded in Salem, Tamil Nadu, with a clear mission: to eliminate the hassle of dying house plants while giving homeowners, designers, and business owners breathtaking greenery that looks and feels 100% natural.
+        </p>
+
+        <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed font-body-md">
+          Live plants require specific lighting, daily watering, pesticide care, and seasonal pruning. Our team hand-curates each botanical design with premium PE/silk foliage, realistic trunk veins, and weighted decorative ceramic/nursery pots — ensuring your space stays vibrant 365 days a year.
+        </p>
+
+        <!-- Feature Chips -->
+        <div class="grid grid-cols-2 gap-4 pt-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
+            <span class="text-xl">🍃</span>
+            <span class="text-xs font-bold text-deep-forest uppercase tracking-wider">100% Real Touch Feel</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
+            <span class="text-xl">☀️</span>
+            <span class="text-xs font-bold text-deep-forest uppercase tracking-wider">Fade &amp; UV Resistant</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
+            <span class="text-xl">💧</span>
+            <span class="text-xs font-bold text-deep-forest uppercase tracking-wider">Zero Water Needed</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
+            <span class="text-xl">🛡️</span>
+            <span class="text-xs font-bold text-deep-forest uppercase tracking-wider">100% Transit Guarantee</span>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
+
+  <!-- Core Brand Pillars (4-Card Grid) -->
+  <section class="py-16 bg-white border-y border-outline-variant/20">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="font-label-sm text-xs font-bold text-amber-gold uppercase tracking-widest">Why Choose Sango Fiora</span>
+        <h2 class="font-headline-lg text-3xl sm:text-4xl font-bold text-deep-forest mt-2">Built on Quality, Craftsmanship &amp; Trust</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-deep-forest text-amber-gold flex items-center justify-center text-2xl mb-6 shadow-md">🎨</div>
+          <h3 class="font-headline-sm text-xl font-bold text-deep-forest mb-3">Botanical Precision</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            Every leaf pattern, stem curve, and trunk texture is meticulously modeled after live botanical specimens.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-deep-forest text-amber-gold flex items-center justify-center text-2xl mb-6 shadow-md">🪴</div>
+          <h3 class="font-headline-sm text-xl font-bold text-deep-forest mb-3">Pot Included Always</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            No searching for matching planters. Every plant arrives securely potted in a premium, ready-to-display planter.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-deep-forest text-amber-gold flex items-center justify-center text-2xl mb-6 shadow-md">🚚</div>
+          <h3 class="font-headline-sm text-xl font-bold text-deep-forest mb-3">Safe Pan-India Transit</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            Multi-layered shockproof box packaging guarantees your trees and plants arrive flawless anywhere in India.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-[#FAF9F5] border border-outline-variant/30 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-deep-forest text-amber-gold flex items-center justify-center text-2xl mb-6 shadow-md">🏢</div>
+          <h3 class="font-headline-sm text-xl font-bold text-deep-forest mb-3">Commercial Projects</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">
+            We partner with interior architects, luxury hotels, corporate offices, and salons for turnkey greenery installations.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Stats Showcase Banner -->
+  <section class="py-16 max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="bg-deep-forest rounded-3xl p-10 sm:p-14 text-white shadow-2xl border border-amber-gold/30 relative overflow-hidden">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-gold/10 rounded-full blur-3xl"></div>
+      
+      <div class="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-white/15">
+        <div class="pt-4 lg:pt-0">
+          <span class="text-3xl sm:text-5xl font-extrabold text-amber-gold block font-headline-lg mb-1">{{ plants.products.length }}+</span>
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80">Botanical Designs</span>
+        </div>
+        <div class="pt-4 lg:pt-0">
+          <span class="text-3xl sm:text-5xl font-extrabold text-amber-gold block font-headline-lg mb-1">4.9 / 5</span>
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80">★ Customer Rating</span>
+        </div>
+        <div class="pt-4 lg:pt-0">
+          <span class="text-3xl sm:text-5xl font-extrabold text-amber-gold block font-headline-lg mb-1">20,000+</span>
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80">Indian Homes Beautified</span>
+        </div>
+        <div class="pt-4 lg:pt-0">
+          <span class="text-3xl sm:text-5xl font-extrabold text-amber-gold block font-headline-lg mb-1">24 Hours</span>
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80">Dispatch Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial & Custom Studio Consultation CTA Banner -->
+  <section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop pt-4">
+    <div class="bg-gradient-to-r from-amber-gold to-amber-500 text-deep-forest rounded-3xl p-10 sm:p-14 shadow-xl text-center relative overflow-hidden">
+      <div class="max-w-3xl mx-auto space-y-4 relative z-10">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-deep-forest/80 bg-deep-forest/10 px-4 py-1.5 rounded-full inline-block">
+          B2B &amp; Custom Interior Design Support
+        </span>
+        <h2 class="font-headline-lg text-3xl sm:text-4xl font-bold text-deep-forest">
+          Need Custom Greenery for Your Business or Project?
+        </h2>
+        <p class="text-deep-forest/90 text-base sm:text-lg font-medium leading-relaxed">
+          From single statement Ficus trees to large-scale hotel lobbies and office greenery layouts, our team in Salem provides custom quotes, bulk discounts, and GST invoicing.
+        </p>
+        <div class="pt-4 flex flex-wrap justify-center gap-4">
+          <a href="/contact/" 
+             class="bg-deep-forest hover:bg-primary-container text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider shadow-xl transition-all transform hover:scale-105">
+            Contact Our Design Team →
+          </a>
+          <a href="/products/" 
+             class="bg-white/90 hover:bg-white text-deep-forest px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider shadow-md transition-all transform hover:scale-105">
+            Explore All {{ plants.products.length }} Plants
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
