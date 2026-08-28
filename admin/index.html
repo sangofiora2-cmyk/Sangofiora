@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | Sango Fiora</title>
+  <title>Admin Studio | Sango Fiora</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,42 +15,48 @@
       theme: {
         extend: {
           colors: {
-            'forest': '#1B4332',
-            'forest-light': '#2D6A4F',
-            'amber': '#F59E0B',
+            'deep-forest': '#0F291E',
+            'forest-light': '#1B4332',
+            'amber-gold': '#F59E0B',
             'amber-light': '#FCD34D',
+            'surface-low': '#F8F7F4',
           }
         }
       }
     }
   </script>
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F7F4; }
     .mono { font-family: 'JetBrains Mono', monospace; }
-    .tab-active { background: #1B4332; color: white; }
-    .fade-in { animation: fadeIn 0.3s ease-in-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .admin-card { transition: all 0.2s; }
-    .admin-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+    .tab-active { background-color: #0F291E !important; color: #FFFFFF !important; box-shadow: 0 4px 12px rgba(15, 41, 30, 0.25); }
+    .fade-in { animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .admin-card { transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .admin-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen">
+<body class="text-gray-900 min-h-screen">
 
   <!-- Admin Top Bar -->
-  <header class="bg-forest text-white sticky top-0 z-50 shadow-lg">
+  <header class="bg-deep-forest text-white sticky top-0 z-50 border-b border-amber-gold/20 shadow-md">
     <div class="max-w-[1440px] mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <a href="/" class="flex items-center gap-2 hover:opacity-90 transition-opacity">
           <span class="text-2xl">🌿</span>
-          <span class="font-bold text-lg tracking-tight">Sango Fiora</span>
+          <span class="font-extrabold text-lg tracking-tight text-white">Sango Fiora</span>
         </a>
-        <span class="bg-amber text-forest text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Admin</span>
+        <span class="bg-amber-gold text-deep-forest text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-widest shadow-sm">Admin Studio</span>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="/" class="text-white/70 hover:text-white text-xs font-medium transition-colors">← Back to Store</a>
-        <div class="flex items-center gap-2">
-          <span id="admin-user-name" class="text-xs font-medium text-white/80"></span>
-          <button id="admin-signout" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">Sign Out</button>
+      <div class="flex items-center gap-5">
+        <a href="/" class="text-white/70 hover:text-amber-gold text-xs font-bold transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">storefront</span> Storefront
+        </a>
+        <div class="h-4 w-px bg-white/20"></div>
+        <div class="flex items-center gap-3">
+          <span id="admin-user-name" class="text-xs font-semibold text-white/90"></span>
+          <button id="admin-signout" class="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border border-white/10">
+            Sign Out
+          </button>
         </div>
       </div>
     </div>
@@ -58,107 +64,141 @@
 
   <!-- Auth Gate (shown if not logged in or not admin) -->
   <div id="auth-gate" class="flex items-center justify-center min-h-[80vh] px-4">
-    <div class="text-center max-w-md">
-      <div class="text-6xl mb-4">🔒</div>
-      <h1 class="text-2xl font-bold text-gray-900 mb-2">Admin Access Required</h1>
-      <p class="text-gray-500 text-sm mb-6" id="auth-gate-msg">Checking your permissions...</p>
-      <a href="/login/" class="inline-block bg-forest text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-forest-light transition-colors">Sign In as Admin</a>
+    <div class="text-center max-w-md bg-white p-10 rounded-3xl border border-outline-variant/30 shadow-2xl">
+      <div class="w-16 h-16 rounded-2xl bg-amber-gold/20 text-deep-forest flex items-center justify-center text-3xl mx-auto mb-4 font-bold">🔒</div>
+      <h1 class="text-2xl font-bold text-deep-forest mb-2">Admin Access Required</h1>
+      <p class="text-gray-500 text-xs mb-6 leading-relaxed" id="auth-gate-msg">Checking your permissions...</p>
+      <a href="/login/" class="inline-block bg-deep-forest hover:bg-forest-light text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-lg">
+        Sign In as Admin
+      </a>
     </div>
   </div>
 
   <!-- Main Admin Dashboard (hidden until auth verified) -->
-  <main id="admin-main" class="hidden max-w-[1440px] mx-auto px-4 md:px-8 py-6">
+  <main id="admin-main" class="hidden max-w-[1440px] mx-auto px-4 md:px-8 py-8">
 
-    <!-- Navigation Tabs -->
-    <nav class="flex gap-2 mb-8 border-b border-gray-200 pb-4 overflow-x-auto">
-      <button data-admin-tab="dashboard" class="admin-tab tab-active px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap">
-        <span class="material-symbols-outlined text-sm align-middle mr-1">dashboard</span> Dashboard
+    <!-- Navigation Tabs (Pill Style) -->
+    <nav class="flex gap-2 mb-8 bg-white p-2 rounded-2xl border border-outline-variant/30 shadow-sm max-w-max overflow-x-auto">
+      <button data-admin-tab="dashboard" class="admin-tab tab-active px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-2">
+        <span class="material-symbols-outlined text-base">dashboard</span> Overview
       </button>
-      <button data-admin-tab="products" class="admin-tab bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap">
-        <span class="material-symbols-outlined text-sm align-middle mr-1">inventory_2</span> Products
+      <button data-admin-tab="products" class="admin-tab text-gray-600 hover:bg-gray-100 px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-2">
+        <span class="material-symbols-outlined text-base">inventory_2</span> Products
       </button>
-      <button data-admin-tab="orders" class="admin-tab bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap">
-        <span class="material-symbols-outlined text-sm align-middle mr-1">receipt_long</span> Orders
+      <button data-admin-tab="orders" class="admin-tab text-gray-600 hover:bg-gray-100 px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-2">
+        <span class="material-symbols-outlined text-base">receipt_long</span> Orders
       </button>
-      <button data-admin-tab="coupons" class="admin-tab bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap">
-        <span class="material-symbols-outlined text-sm align-middle mr-1">local_offer</span> Coupons
+      <button data-admin-tab="coupons" class="admin-tab text-gray-600 hover:bg-gray-100 px-5 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-2">
+        <span class="material-symbols-outlined text-base">local_offer</span> Coupons
       </button>
     </nav>
 
     <!-- ═══════════════ DASHBOARD TAB ═══════════════ -->
     <section id="tab-dashboard" class="admin-tab-content fade-in">
-      <h2 class="text-xl font-bold text-gray-900 mb-6">📊 Overview</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div class="admin-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-          <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Total Products</p>
-          <p id="stat-products" class="text-3xl font-bold text-forest">0</p>
-          <p class="text-[11px] text-gray-400 mt-1">Active in catalog</p>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="text-amber-gold text-xs font-bold uppercase tracking-widest">Performance Metrics</span>
+          <h2 class="text-2xl font-bold text-deep-forest">Store Overview</h2>
         </div>
-        <div class="admin-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-          <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Total Orders</p>
-          <p id="stat-orders" class="text-3xl font-bold text-amber-600">0</p>
-          <p class="text-[11px] text-gray-400 mt-1">All time</p>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <div class="admin-card bg-white rounded-2xl border border-outline-variant/30 p-6 shadow-sm flex items-center justify-between">
+          <div>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Total Products</p>
+            <p id="stat-products" class="text-3xl font-extrabold text-deep-forest">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Active catalog items</p>
+          </div>
+          <div class="w-12 h-12 rounded-2xl bg-deep-forest/10 text-deep-forest flex items-center justify-center text-2xl font-bold">🪴</div>
         </div>
-        <div class="admin-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-          <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Revenue</p>
-          <p id="stat-revenue" class="text-3xl font-bold text-green-600">₹0</p>
-          <p class="text-[11px] text-gray-400 mt-1">Total earnings</p>
+
+        <div class="admin-card bg-white rounded-2xl border border-outline-variant/30 p-6 shadow-sm flex items-center justify-between">
+          <div>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Total Orders</p>
+            <p id="stat-orders" class="text-3xl font-extrabold text-amber-600">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">All time orders</p>
+          </div>
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl font-bold">📦</div>
         </div>
-        <div class="admin-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-          <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Sold Out</p>
-          <p id="stat-soldout" class="text-3xl font-bold text-red-500">0</p>
-          <p class="text-[11px] text-gray-400 mt-1">Items unavailable</p>
+
+        <div class="admin-card bg-white rounded-2xl border border-outline-variant/30 p-6 shadow-sm flex items-center justify-between">
+          <div>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Gross Revenue</p>
+            <p id="stat-revenue" class="text-3xl font-extrabold text-green-600">₹0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Total store earnings</p>
+          </div>
+          <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center text-2xl font-bold">💰</div>
+        </div>
+
+        <div class="admin-card bg-white rounded-2xl border border-outline-variant/30 p-6 shadow-sm flex items-center justify-between">
+          <div>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Sold Out</p>
+            <p id="stat-soldout" class="text-3xl font-extrabold text-red-500">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Out of stock items</p>
+          </div>
+          <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-2xl font-bold">🚫</div>
         </div>
       </div>
 
       <!-- Recent Orders Quick View -->
-      <h3 class="text-lg font-bold text-gray-900 mb-4">📦 Recent Orders</h3>
-      <div id="dashboard-recent-orders" class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <p class="p-8 text-center text-gray-400 text-sm">Loading recent orders...</p>
+      <div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm p-6">
+        <h3 class="text-lg font-bold text-deep-forest mb-4 flex items-center gap-2">
+          <span>📦 Recent Orders</span>
+        </h3>
+        <div id="dashboard-recent-orders" class="overflow-hidden">
+          <p class="py-8 text-center text-gray-400 text-xs">Loading recent orders...</p>
+        </div>
       </div>
     </section>
 
     <!-- ═══════════════ PRODUCTS TAB ═══════════════ -->
     <section id="tab-products" class="admin-tab-content hidden fade-in">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <h2 class="text-xl font-bold text-gray-900">🌱 Product Management</h2>
-        <button id="btn-add-product" class="bg-forest hover:bg-forest-light text-white px-5 py-2.5 rounded-xl font-bold text-xs transition-colors flex items-center gap-2 shadow-md">
+        <div>
+          <span class="text-amber-gold text-xs font-bold uppercase tracking-widest">Inventory Control</span>
+          <h2 class="text-2xl font-bold text-deep-forest">Product Management</h2>
+        </div>
+        <button id="btn-add-product" class="bg-deep-forest hover:bg-forest-light text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-md">
           <span class="material-symbols-outlined text-base">add</span> Add New Product
         </button>
       </div>
 
-      <!-- Search & Filter -->
-      <div class="flex flex-wrap gap-3 mb-6">
-        <input type="text" id="admin-product-search" placeholder="Search products by name..."
-          class="flex-1 min-w-[200px] border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent">
-        <select id="admin-product-filter" class="border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
+      <!-- Search & Filter Bar -->
+      <div class="bg-white p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-wrap gap-3 mb-6">
+        <div class="flex-1 min-w-[220px] relative">
+          <input type="text" id="admin-product-search" placeholder="Search products by name or slug..."
+            class="w-full border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-base pointer-events-none">search</span>
+        </div>
+        <select id="admin-product-filter" class="border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-deep-forest">
           <option value="all">All Categories</option>
           <option value="Foliage">Foliage</option>
           <option value="Trees">Trees</option>
           <option value="Palms">Palms</option>
           <option value="Flowering">Flowering</option>
         </select>
-        <select id="admin-stock-filter" class="border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
+        <select id="admin-stock-filter" class="border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-deep-forest">
           <option value="all">All Stock Status</option>
-          <option value="active">In Stock</option>
+          <option value="active">In Stock / Active</option>
           <option value="soldout">Sold Out</option>
           <option value="hidden">Hidden</option>
         </select>
       </div>
 
       <!-- Products Table -->
-      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
           <table class="w-full text-xs">
-            <thead class="bg-gray-50 border-b border-gray-200">
+            <thead class="bg-surface-low border-b border-gray-200">
               <tr>
-                <th class="text-left px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Product</th>
-                <th class="text-left px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Category</th>
-                <th class="text-right px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Price</th>
-                <th class="text-right px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">MRP</th>
-                <th class="text-center px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Stock</th>
-                <th class="text-center px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Status</th>
-                <th class="text-center px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Actions</th>
+                <th class="text-left px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Product</th>
+                <th class="text-left px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Category</th>
+                <th class="text-right px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Selling Price</th>
+                <th class="text-right px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">MRP</th>
+                <th class="text-center px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Stock</th>
+                <th class="text-center px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                <th class="text-center px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody id="admin-products-tbody" class="divide-y divide-gray-100">
@@ -171,35 +211,41 @@
 
     <!-- ═══════════════ ORDERS TAB ═══════════════ -->
     <section id="tab-orders" class="admin-tab-content hidden fade-in">
-      <h2 class="text-xl font-bold text-gray-900 mb-6">📋 Order Management</h2>
+      <div class="mb-6">
+        <span class="text-amber-gold text-xs font-bold uppercase tracking-widest">Fulfillment Engine</span>
+        <h2 class="text-2xl font-bold text-deep-forest">Order Management</h2>
+      </div>
 
       <!-- Order Filters -->
-      <div class="flex flex-wrap gap-3 mb-6">
-        <select id="admin-order-status-filter" class="border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
-          <option value="all">All Statuses</option>
+      <div class="bg-white p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-wrap gap-3 mb-6">
+        <select id="admin-order-status-filter" class="border border-gray-200 rounded-xl px-4 py-2.5 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-deep-forest">
+          <option value="all">All Order Statuses</option>
           <option value="Order Placed">Order Placed</option>
           <option value="Quality Inspection">Quality Inspection</option>
           <option value="Packed">Packed</option>
           <option value="Out for Delivery">Out for Delivery</option>
           <option value="Delivered">Delivered</option>
         </select>
-        <input type="text" id="admin-order-search" placeholder="Search by Order ID or customer name..."
-          class="flex-1 min-w-[200px] border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
+        <div class="flex-1 min-w-[220px] relative">
+          <input type="text" id="admin-order-search" placeholder="Search by Order ID or customer name..."
+            class="w-full border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-base pointer-events-none">search</span>
+        </div>
       </div>
 
       <!-- Orders Table -->
-      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
           <table class="w-full text-xs">
-            <thead class="bg-gray-50 border-b border-gray-200">
+            <thead class="bg-surface-low border-b border-gray-200">
               <tr>
-                <th class="text-left px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Order ID</th>
-                <th class="text-left px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Customer</th>
-                <th class="text-left px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Date</th>
-                <th class="text-right px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Total</th>
-                <th class="text-center px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Payment</th>
-                <th class="text-center px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Status</th>
-                <th class="text-center px-4 py-3 font-bold text-gray-500 uppercase tracking-wider">Actions</th>
+                <th class="text-left px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Order ID</th>
+                <th class="text-left px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Customer</th>
+                <th class="text-left px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Date</th>
+                <th class="text-right px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Total</th>
+                <th class="text-center px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Payment</th>
+                <th class="text-center px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                <th class="text-center px-4 py-3.5 font-bold text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody id="admin-orders-tbody" class="divide-y divide-gray-100">
@@ -213,13 +259,16 @@
     <!-- ═══════════════ COUPONS TAB ═══════════════ -->
     <section id="tab-coupons" class="admin-tab-content hidden fade-in">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <h2 class="text-xl font-bold text-gray-900">🏷️ Coupon Management</h2>
-        <button id="btn-add-coupon" class="bg-forest hover:bg-forest-light text-white px-5 py-2.5 rounded-xl font-bold text-xs transition-colors flex items-center gap-2 shadow-md">
+        <div>
+          <span class="text-amber-gold text-xs font-bold uppercase tracking-widest">Promotions</span>
+          <h2 class="text-2xl font-bold text-deep-forest">Coupon Management</h2>
+        </div>
+        <button id="btn-add-coupon" class="bg-deep-forest hover:bg-forest-light text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-md">
           <span class="material-symbols-outlined text-base">add</span> Create Coupon
         </button>
       </div>
-      <div id="admin-coupons-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <p class="text-gray-400 text-sm col-span-full text-center py-8">Loading coupons...</p>
+      <div id="admin-coupons-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <p class="text-gray-400 text-xs col-span-full text-center py-8">Loading coupons...</p>
       </div>
     </section>
   </main>
@@ -228,7 +277,7 @@
   <div id="product-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
       <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white rounded-t-3xl z-10">
-        <h3 id="product-modal-title" class="font-bold text-lg text-gray-900">Add New Product</h3>
+        <h3 id="product-modal-title" class="font-bold text-lg text-deep-forest">Add New Product</h3>
         <button id="close-product-modal" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 font-bold">&times;</button>
       </div>
       <form id="product-form" class="p-6 space-y-4">
@@ -236,18 +285,18 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Product Name *</label>
-            <input type="text" id="pf-name" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="e.g. Fiddle Leaf Fig">
+            <input type="text" id="pf-name" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="e.g. Fiddle Leaf Fig">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Slug (URL) *</label>
-            <input type="text" id="pf-slug" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm mono focus:outline-none focus:ring-2 focus:ring-forest" placeholder="e.g. fiddle-leaf-fig-90cm">
+            <input type="text" id="pf-slug" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs mono focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="e.g. fiddle-leaf-fig-90cm">
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Category *</label>
-            <select id="pf-category" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
-              <option value="">Select</option>
+            <select id="pf-category" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest">
+              <option value="">Select Category</option>
               <option value="Foliage">Foliage</option>
               <option value="Trees">Trees</option>
               <option value="Palms">Palms</option>
@@ -256,54 +305,54 @@
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Size *</label>
-            <input type="text" id="pf-size" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="e.g. 120cm">
+            <input type="text" id="pf-size" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="e.g. 120cm">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Variant</label>
-            <input type="text" id="pf-variant" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="e.g. White, Yellow">
+            <input type="text" id="pf-variant" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="e.g. White, Yellow">
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Selling Price (₹) *</label>
-            <input type="number" id="pf-price" required min="1" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="3500">
+            <input type="number" id="pf-price" required min="1" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="3500">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">MRP (₹) *</label>
-            <input type="number" id="pf-mrp" required min="1" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="5000">
+            <input type="number" id="pf-mrp" required min="1" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="5000">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Stock Qty</label>
-            <input type="number" id="pf-stock" min="0" value="100" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
+            <input type="number" id="pf-stock" min="0" value="100" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest">
           </div>
         </div>
         <div>
           <label class="block text-xs font-bold text-gray-700 mb-1">Image URL *</label>
-          <input type="text" id="pf-image" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="/images/products/product-name.jpg or https://...">
+          <input type="text" id="pf-image" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="/images/products/product-name.jpg or https://...">
         </div>
         <div>
           <label class="block text-xs font-bold text-gray-700 mb-1">Description</label>
-          <textarea id="pf-description" rows="3" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest resize-none" placeholder="Product description..."></textarea>
+          <textarea id="pf-description" rows="3" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest resize-none" placeholder="Product description..."></textarea>
         </div>
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-6 pt-2">
           <label class="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" id="pf-pot-included" checked class="w-4 h-4 rounded border-gray-300 text-forest focus:ring-forest">
-            <span class="text-xs font-medium text-gray-700">Pot Included</span>
+            <input type="checkbox" id="pf-pot-included" checked class="w-4 h-4 rounded border-gray-300 text-deep-forest focus:ring-deep-forest">
+            <span class="text-xs font-bold text-gray-700">Pot Included</span>
           </label>
           <label class="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" id="pf-active" checked class="w-4 h-4 rounded border-gray-300 text-forest focus:ring-forest">
-            <span class="text-xs font-medium text-gray-700">Active (Visible)</span>
+            <input type="checkbox" id="pf-active" checked class="w-4 h-4 rounded border-gray-300 text-deep-forest focus:ring-deep-forest">
+            <span class="text-xs font-bold text-gray-700">Active (Visible)</span>
           </label>
           <label class="flex items-center gap-2 cursor-pointer">
             <input type="checkbox" id="pf-soldout" class="w-4 h-4 rounded border-gray-300 text-red-500 focus:ring-red-500">
-            <span class="text-xs font-medium text-gray-700">Mark as Sold Out</span>
+            <span class="text-xs font-bold text-gray-700">Mark as Sold Out</span>
           </label>
         </div>
-        <div class="flex gap-3 pt-2">
-          <button type="submit" class="flex-1 bg-forest hover:bg-forest-light text-white py-3 rounded-xl font-bold text-sm transition-colors shadow-md">
+        <div class="flex gap-3 pt-4">
+          <button type="submit" class="flex-1 bg-deep-forest hover:bg-forest-light text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md">
             Save Product
           </button>
-          <button type="button" id="cancel-product-modal" class="px-6 py-3 rounded-xl border border-gray-200 font-bold text-sm text-gray-600 hover:bg-gray-50 transition-colors">
+          <button type="button" id="cancel-product-modal" class="px-6 py-3 rounded-xl border border-gray-200 font-bold text-xs text-gray-600 hover:bg-gray-50 transition-colors">
             Cancel
           </button>
         </div>
@@ -315,15 +364,15 @@
   <div id="order-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
       <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white rounded-t-3xl z-10">
-        <h3 id="order-modal-title" class="font-bold text-lg text-gray-900">Order Details</h3>
+        <h3 id="order-modal-title" class="font-bold text-lg text-deep-forest">Order Details</h3>
         <button id="close-order-modal" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 font-bold">&times;</button>
       </div>
       <div id="order-modal-content" class="p-6 space-y-4">
-        <p class="text-gray-400 text-sm text-center">Loading...</p>
+        <p class="text-gray-400 text-xs text-center">Loading...</p>
       </div>
       <div class="p-6 border-t border-gray-100 space-y-3">
         <label class="block text-xs font-bold text-gray-700 mb-1">Update Delivery Status</label>
-        <select id="order-status-select" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
+        <select id="order-status-select" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest font-bold">
           <option value="1">1 — Order Placed</option>
           <option value="2">2 — Quality Inspection</option>
           <option value="3">3 — Packed</option>
@@ -331,8 +380,8 @@
           <option value="5">5 — Delivered</option>
         </select>
         <label class="block text-xs font-bold text-gray-700 mb-1">Tracking Notes (optional)</label>
-        <textarea id="order-tracking-notes" rows="2" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest resize-none" placeholder="e.g. Shipped via BlueDart, AWB #12345"></textarea>
-        <button id="btn-update-order-status" class="w-full bg-amber hover:bg-amber-light text-forest py-3 rounded-xl font-bold text-sm transition-colors shadow-md">
+        <textarea id="order-tracking-notes" rows="2" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest resize-none" placeholder="e.g. Shipped via BlueDart, AWB #12345"></textarea>
+        <button id="btn-update-order-status" class="w-full bg-amber-gold hover:bg-amber-400 text-deep-forest py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md">
           Update Order Status
         </button>
       </div>
@@ -343,29 +392,29 @@
   <div id="coupon-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full">
       <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-        <h3 class="font-bold text-lg text-gray-900">Create Coupon</h3>
+        <h3 class="font-bold text-lg text-deep-forest">Create Coupon</h3>
         <button id="close-coupon-modal" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 font-bold">&times;</button>
       </div>
       <form id="coupon-form" class="p-6 space-y-4">
         <div>
           <label class="block text-xs font-bold text-gray-700 mb-1">Coupon Code *</label>
-          <input type="text" id="cf-code" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm mono uppercase focus:outline-none focus:ring-2 focus:ring-forest" placeholder="e.g. SUMMER25">
+          <input type="text" id="cf-code" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs mono uppercase focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="e.g. SUMMER25">
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Discount % *</label>
-            <input type="number" id="cf-percent" required min="1" max="100" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="15">
+            <input type="number" id="cf-percent" required min="1" max="100" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="15">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Min. Subtotal (₹)</label>
-            <input type="number" id="cf-min" min="0" value="0" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest">
+            <input type="number" id="cf-min" min="0" value="0" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest">
           </div>
         </div>
         <div>
           <label class="block text-xs font-bold text-gray-700 mb-1">Label / Description *</label>
-          <input type="text" id="cf-label" required class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest" placeholder="e.g. 25% Summer Sale Discount">
+          <input type="text" id="cf-label" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-deep-forest" placeholder="e.g. 25% Summer Sale Discount">
         </div>
-        <button type="submit" class="w-full bg-forest hover:bg-forest-light text-white py-3 rounded-xl font-bold text-sm transition-colors shadow-md">
+        <button type="submit" class="w-full bg-deep-forest hover:bg-forest-light text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md">
           Create Coupon
         </button>
       </form>
@@ -373,7 +422,7 @@
   </div>
 
   <!-- Toast Container -->
-  <div id="admin-toast" class="fixed bottom-6 right-6 z-50 hidden bg-forest text-white px-5 py-3 rounded-xl shadow-lg font-bold text-sm max-w-xs"></div>
+  <div id="admin-toast" class="fixed bottom-6 right-6 z-50 hidden bg-deep-forest text-white px-5 py-3 rounded-xl shadow-2xl font-bold text-xs max-w-xs border border-amber-gold/30"></div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
