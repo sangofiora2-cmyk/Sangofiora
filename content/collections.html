@@ -5,39 +5,65 @@ description: Explore Sango Fiora collections — lush foliage, resort-style palm
 permalink: /collections/
 ---
 
-<main class="bg-background min-h-screen pb-20 pt-[80px]">
+<main class="pt-[80px]">
   
-  <!-- Premium Collections Hero Banner -->
-  <section class="relative bg-deep-forest text-on-primary py-16 md:py-20 overflow-hidden border-b border-amber-gold/20">
-    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    <div class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop text-center relative z-10">
-      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-bold text-amber-gold uppercase tracking-widest mb-3">
-        <span>🌿 {{ plants.stats.totalProducts }} Botanical Designs</span>
-        <span>·</span>
-        <span>4 Curated Spaces</span>
-      </span>
-      <h1 class="font-headline-lg text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Shop by Collection</h1>
-      <p class="text-white/80 text-sm sm:text-base max-w-2xl mx-auto">
-        Handcrafted artificial plant categories designed for living rooms, offices, balconies, bedrooms, and commercial spaces across India.
+  <!-- Hero Banner (Matching Landing & About Page Design) -->
+  <section class="relative w-full h-[45vh] min-h-[340px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full" 
+         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBlR62xP-P9IZV45u3pfZjB5Xbl2TNV54_5VT7hqltUb4cn7ilbGfdvm3QSAOgfjItAFozoBE5V0XH_YcKagm8AqLx1CBoSy19k1PFS79UkmHbOCla7sY_HkuqbeR8ntfdDLnN3j1beYo71U1DPxyvwmnrX3ve5isO5Vt2ny9sd4UrwlcEAMfrq9_ebuvckzJ5sodoJUEjGhjhdwIpNWUChoDUZ3v7U-rjhPYHAsF4J00o4oFkHvY_gm7Y3bhGtEt31WI6rzHWprlbZ')"></div>
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+    <div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center">
+      <span class="text-amber-gold font-label-md uppercase tracking-widest mb-3">🌿 {{ plants.stats.totalProducts }} Botanical Designs · 4 Curated Spaces</span>
+      <h1 class="font-display-lg-mobile md:font-display-lg text-on-primary mb-4 drop-shadow-md">Shop by Category</h1>
+      <p class="font-body-lg text-body-lg text-on-primary/90 max-w-2xl drop-shadow-sm">
+        Handcrafted artificial plant collections designed for living rooms, offices, balconies, and bedrooms across India.
       </p>
     </div>
   </section>
 
-  <!-- Collections Grid -->
-  <section class="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-14">
+  <!-- Trust Badges (Matching Landing Page) -->
+  <section class="bg-surface-container-low py-10 border-b border-outline-variant/20">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-outline-variant/30">
+        <div class="flex flex-col items-center gap-2 pt-4 md:pt-0">
+          <span class="material-symbols-outlined text-3xl text-amber-gold" style="font-variation-settings: 'FILL' 0;">eco</span>
+          <h3 class="font-headline-sm text-headline-sm text-deep-forest">Zero Maintenance</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant text-xs">No watering, sunlight or pruning required</p>
+        </div>
+        <div class="flex flex-col items-center gap-2 pt-4 md:pt-0">
+          <span class="material-symbols-outlined text-3xl text-amber-gold" style="font-variation-settings: 'FILL' 0;">potted_plant</span>
+          <h3 class="font-headline-sm text-headline-sm text-deep-forest">Premium Pot Included</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant text-xs">Ready to display right out of the box</p>
+        </div>
+        <div class="flex flex-col items-center gap-2 pt-4 md:pt-0">
+          <span class="material-symbols-outlined text-3xl text-amber-gold" style="font-variation-settings: 'FILL' 0;">verified_user</span>
+          <h3 class="font-headline-sm text-headline-sm text-deep-forest">Transit Guarantee</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant text-xs">100% safe arrival guaranteed across India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections Grid (Bento Style matching Landing Page) -->
+  <section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-16">
+    <div class="text-center mb-14">
+      <h2 class="font-display-lg-mobile md:font-headline-lg text-deep-forest mb-4">Curated Space Collections</h2>
+      <div class="w-24 h-1 bg-amber-gold mx-auto"></div>
+    </div>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {% for c in plants.collectionsList %}
-      <a href="/collections/{{ c.key }}/" class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 aspect-[4/5] bg-deep-forest block border border-outline-variant/30">
-        <img src="{{ c.banner }}" alt="{{ c.heading }}" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-        <div class="absolute inset-0 bg-gradient-to-t from-deep-forest/95 via-deep-forest/40 to-transparent"></div>
+      <a href="/collections/{{ c.key }}/" class="group relative rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 aspect-[4/5] bg-deep-forest block border border-outline-variant/20">
+        <img src="{{ c.banner }}" alt="{{ c.heading }}" loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-deep-forest/90 via-deep-forest/30 to-transparent"></div>
         <div class="absolute top-4 left-4 z-10">
-          <span class="bg-amber-gold text-deep-forest text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md">{{ c.count }} Varieties</span>
+          <span class="bg-amber-gold text-deep-forest text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wider shadow-sm font-label-md">{{ c.count }} Varieties</span>
         </div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-on-primary z-10">
-          <h2 class="font-headline-sm text-2xl font-bold mb-1 text-white group-hover:text-amber-gold transition-colors">{{ c.heading }}</h2>
-          <p class="text-xs text-white/70 mb-4 line-clamp-2">{{ c.tagline }}</p>
-          <span class="inline-flex items-center gap-2 text-xs font-bold bg-amber-gold text-deep-forest px-4 py-2 rounded-full group-hover:bg-amber-400 transition-all shadow-md">
-            <span>Explore {{ c.heading }}</span>
+          <h3 class="font-headline-lg text-2xl font-bold mb-1 text-on-primary group-hover:text-amber-gold transition-colors">{{ c.heading }}</h3>
+          <p class="text-xs text-on-primary/80 mb-4 line-clamp-2">{{ c.tagline }}</p>
+          <span class="font-label-md text-label-md text-amber-gold uppercase tracking-wider group-hover:underline inline-flex items-center gap-1">
+            <span>Explore Collection</span>
             <span>→</span>
           </span>
         </div>
@@ -45,15 +71,15 @@ permalink: /collections/
       {% endfor %}
     </div>
 
-    <!-- Today's Special Deals Block -->
+    <!-- Today's Special Deals Block (Matching Landing Page Best Sellers Section) -->
     {% if plants.deals.length %}
-    <div class="mt-16 bg-white rounded-3xl border border-outline-variant/30 p-6 sm:p-10 shadow-sm">
+    <div class="mt-20 bg-white rounded-lg border border-outline-variant/20 p-8 sm:p-10 shadow-sm">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <span class="text-xs font-bold text-red-600 uppercase tracking-widest font-label-md">🔥 Limited Time Deals</span>
+          <span class="font-label-sm text-xs font-bold text-red-600 uppercase tracking-widest">🔥 Limited Time Deals</span>
           <h2 class="font-headline-lg text-2xl sm:text-3xl font-bold text-deep-forest mt-1">Today's Special Discounts</h2>
         </div>
-        <a href="/products/" class="inline-flex items-center gap-1 text-xs font-bold text-deep-forest hover:text-amber-gold transition-colors bg-surface-container-high px-4 py-2 rounded-full">
+        <a href="/products/" class="inline-flex items-center gap-2 text-deep-forest font-bold hover:text-amber-gold transition-colors font-label-md">
           <span>View All {{ plants.products.length }} Plants</span>
           <span>→</span>
         </a>
