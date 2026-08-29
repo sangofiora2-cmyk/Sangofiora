@@ -19,8 +19,10 @@
     // ─── Get Current User ───
     getUser: function () { return currentUser; },
     getProfile: function () { return currentProfile; },
-    isLoggedIn: function () { return !!currentUser; },
-    isAdmin: function () { return currentProfile && currentProfile.role === 'admin'; },
+    isAdmin: function () {
+      var email = (currentUser && currentUser.email) ? currentUser.email.toLowerCase() : '';
+      return ['sangofiora2@gmail.com', 'sangofiora@gmail.com'].indexOf(email) !== -1 || (currentProfile && currentProfile.role === 'admin');
+    },
 
     // ─── Google Sign-In ───
     signInWithGoogle: function () {
@@ -165,7 +167,8 @@
       }
 
       if (adminLink) {
-        var isSuperAdmin = (currentUser && currentUser.email && currentUser.email.toLowerCase() === 'sangofiora2@gmail.com');
+        var userEmail = (currentUser && currentUser.email) ? currentUser.email.toLowerCase() : '';
+        var isSuperAdmin = ['sangofiora2@gmail.com', 'sangofiora@gmail.com'].indexOf(userEmail) !== -1;
         var isAdminUser = (currentProfile && currentProfile.role === 'admin') || (meta.role === 'admin') || isSuperAdmin;
         adminLink.classList.toggle('hidden', !isAdminUser);
       }

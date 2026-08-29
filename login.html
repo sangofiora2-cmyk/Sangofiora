@@ -204,7 +204,8 @@ document.addEventListener('DOMContentLoaded', function () {
           nameEl.textContent = 'Welcome back, ' + (profile ? profile.full_name : user.email) + '!';
         }
         var adminGo = document.getElementById('auth-admin-go');
-        var isSuperAdmin = (user && user.email && user.email.toLowerCase() === 'sangofiora2@gmail.com');
+        var userEmail = (user && user.email) ? user.email.toLowerCase() : '';
+        var isSuperAdmin = ['sangofiora2@gmail.com', 'sangofiora@gmail.com'].indexOf(userEmail) !== -1;
         if (adminGo && ((profile && profile.role === 'admin') || isSuperAdmin)) {
           adminGo.classList.remove('hidden');
         }

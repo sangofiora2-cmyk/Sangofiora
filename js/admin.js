@@ -57,7 +57,8 @@
       document.getElementById('admin-user-name').textContent = user.email;
 
       // Check if user is admin
-      var isSuperAdmin = (user.email && user.email.toLowerCase() === 'sangofiora2@gmail.com');
+      var userEmail = (user.email || '').toLowerCase();
+      var isSuperAdmin = ['sangofiora2@gmail.com', 'sangofiora@gmail.com'].indexOf(userEmail) !== -1;
 
       sb.from('profiles').select('role, full_name').eq('id', user.id).single().then(function (profileRes) {
         var role = (profileRes.data && profileRes.data.role) || (isSuperAdmin ? 'admin' : 'customer');
