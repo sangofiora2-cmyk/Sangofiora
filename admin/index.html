@@ -62,36 +62,13 @@
 
   <!-- Auth Gate (shown if not logged in or not admin) -->
   <div id="auth-gate" class="flex items-center justify-center min-h-[80vh] px-4">
-    <div class="text-center max-w-md bg-white p-8 sm:p-10 rounded-3xl border border-outline-variant/30 shadow-2xl space-y-5">
-      <div class="w-16 h-16 rounded-2xl bg-amber-gold/20 text-deep-forest flex items-center justify-center text-3xl mx-auto font-bold">🔒</div>
-      <div>
-        <h1 class="text-2xl font-bold text-deep-forest mb-1">Admin Access Studio</h1>
-        <p class="text-gray-500 text-xs leading-relaxed" id="auth-gate-msg">Enter your Admin Master Passcode or Sign In with Google/Email.</p>
-      </div>
-
-      <!-- Direct Manual Passcode Login -->
-      <form id="admin-passcode-form" class="space-y-3 pt-2">
-        <div>
-          <label for="admin-passcode-input" class="block text-left text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">Master Admin Passcode</label>
-          <input type="password" id="admin-passcode-input" required placeholder="Enter passcode (e.g. sango2026)"
-            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-center font-bold tracking-wider focus:outline-none focus:ring-2 focus:ring-deep-forest bg-surface-low">
-        </div>
-        <button type="submit" class="w-full bg-deep-forest hover:bg-forest-light text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md">
-          Unlock Admin Studio
-        </button>
-        <p id="admin-passcode-error" class="hidden text-xs font-bold text-red-600 pt-1"></p>
-      </form>
-
-      <div class="flex items-center gap-3 pt-2">
-        <div class="flex-1 h-px bg-gray-200"></div>
-        <span class="text-[10px] text-gray-400 font-bold uppercase">or</span>
-        <div class="flex-1 h-px bg-gray-200"></div>
-      </div>
-
-      <a href="/login/" class="block w-full bg-surface-low hover:bg-gray-100 border border-gray-200 text-deep-forest py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all">
-        Sign In with Google / Email
+    <div class="text-center max-w-md bg-white p-10 rounded-3xl border border-outline-variant/30 shadow-2xl">
+      <div class="w-16 h-16 rounded-2xl bg-amber-gold/20 text-deep-forest flex items-center justify-center text-3xl mx-auto mb-4 font-bold">🔒</div>
+      <h1 class="text-2xl font-bold text-deep-forest mb-2">Admin Access Required</h1>
+      <p class="text-gray-500 text-xs mb-6 leading-relaxed" id="auth-gate-msg">Checking your permissions...</p>
+      <a href="/login/" class="inline-block bg-deep-forest hover:bg-forest-light text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-lg">
+        Sign In as Admin
       </a>
-      <p class="text-[10px] text-gray-400">Master Passcode: <span class="font-bold text-deep-forest">sango2026</span></p>
     </div>
   </div>
 

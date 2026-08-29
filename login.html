@@ -38,11 +38,10 @@ permalink: /login/
       <div class="flex-1 h-px bg-outline-variant/30"></div>
     </div>
 
-    <!-- Login / Signup / Admin Switcher -->
+    <!-- Login / Signup Switcher -->
     <div class="flex bg-surface-container-low rounded-2xl p-1 border border-outline-variant/20">
-      <button type="button" id="tab-login" class="flex-1 py-2 rounded-xl text-[11px] sm:text-xs font-bold font-label-md bg-deep-forest text-on-primary transition-all shadow-sm">Sign In</button>
-      <button type="button" id="tab-signup" class="flex-1 py-2 rounded-xl text-[11px] sm:text-xs font-bold font-label-md text-on-surface-variant hover:text-deep-forest transition-all">Sign Up</button>
-      <button type="button" id="tab-admin" class="flex-1 py-2 rounded-xl text-[11px] sm:text-xs font-bold font-label-md text-amber-700 hover:text-amber-900 transition-all">Admin PIN</button>
+      <button type="button" id="tab-login" class="flex-1 py-2.5 rounded-xl text-xs font-bold font-label-md bg-deep-forest text-on-primary transition-all shadow-sm">Sign In</button>
+      <button type="button" id="tab-signup" class="flex-1 py-2.5 rounded-xl text-xs font-bold font-label-md text-on-surface-variant hover:text-deep-forest transition-all">Create Account</button>
     </div>
 
     <!-- Login Form -->
@@ -54,32 +53,13 @@ permalink: /login/
       </div>
       <div>
         <label for="login-password" class="block text-xs font-bold text-gray-700 mb-1">Password</label>
-        <input type="password" id="login-password" required placeholder="••••••••" minlength="4"
+        <input type="password" id="login-password" required placeholder="••••••••" minlength="6"
           class="w-full border border-outline-variant/30 rounded-2xl px-4 py-3 bg-surface-container-low focus:bg-white focus:outline-none focus:ring-2 focus:ring-deep-forest text-sm transition-all">
       </div>
       <button type="submit"
         class="w-full bg-deep-forest text-on-primary py-3.5 rounded-2xl font-label-md uppercase tracking-wider text-xs font-bold shadow-md hover:bg-primary-container transition-all">
         Sign In
       </button>
-    </form>
-
-    <!-- Admin Passcode Form (Manual Admin Login) -->
-    <form id="admin-manual-form" class="space-y-4 hidden">
-      <div>
-        <label for="admin-email-field" class="block text-xs font-bold text-gray-700 mb-1">Admin Email</label>
-        <input type="email" id="admin-email-field" required value="sangofiora2@gmail.com"
-          class="w-full border border-outline-variant/30 rounded-2xl px-4 py-3 bg-surface-container-low focus:bg-white focus:outline-none focus:ring-2 focus:ring-deep-forest text-sm transition-all">
-      </div>
-      <div>
-        <label for="admin-pass-field" class="block text-xs font-bold text-gray-700 mb-1">Master Passcode</label>
-        <input type="password" id="admin-pass-field" required placeholder="Enter passcode (e.g. sango2026)"
-          class="w-full border border-outline-variant/30 rounded-2xl px-4 py-3 bg-surface-container-low focus:bg-white focus:outline-none focus:ring-2 focus:ring-deep-forest text-sm transition-all">
-      </div>
-      <button type="submit"
-        class="w-full bg-amber-gold hover:bg-amber-400 text-deep-forest py-3.5 rounded-2xl font-label-md uppercase tracking-wider text-xs font-bold shadow-md transition-all">
-        Unlock Admin Dashboard
-      </button>
-      <p class="text-[11px] text-gray-500 text-center">Master Passcode: <span class="font-bold text-deep-forest">sango2026</span></p>
     </form>
 
     <!-- Signup Form (hidden by default) -->
@@ -129,10 +109,8 @@ permalink: /login/
 document.addEventListener('DOMContentLoaded', function () {
   var tabLogin = document.getElementById('tab-login');
   var tabSignup = document.getElementById('tab-signup');
-  var tabAdmin = document.getElementById('tab-admin');
   var loginForm = document.getElementById('login-form');
   var signupForm = document.getElementById('signup-form');
-  var adminManualForm = document.getElementById('admin-manual-form');
   var statusEl = document.getElementById('auth-status');
   var notConfigured = document.getElementById('auth-not-configured');
   var loggedInBox = document.getElementById('auth-logged-in');
@@ -149,59 +127,22 @@ document.addEventListener('DOMContentLoaded', function () {
     statusEl.classList.remove('hidden');
   }
 
-  function resetTabs() {
-    [tabLogin, tabSignup, tabAdmin].forEach(function (t) {
-      if (t) {
-        t.classList.remove('bg-deep-forest', 'text-on-primary', 'shadow-sm', 'bg-amber-gold', 'text-deep-forest');
-        t.classList.add('text-on-surface-variant');
-      }
-    });
-    [loginForm, signupForm, adminManualForm].forEach(function (f) {
-      if (f) f.classList.add('hidden');
-    });
-  }
-
-  if (tabLogin) {
+  if (tabLogin && tabSignup) {
     tabLogin.addEventListener('click', function () {
-      resetTabs();
       tabLogin.classList.add('bg-deep-forest', 'text-on-primary', 'shadow-sm');
       tabLogin.classList.remove('text-on-surface-variant');
-      if (loginForm) loginForm.classList.remove('hidden');
+      tabSignup.classList.remove('bg-deep-forest', 'text-on-primary', 'shadow-sm');
+      tabSignup.classList.add('text-on-surface-variant');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
     });
-  }
-
-  if (tabSignup) {
     tabSignup.addEventListener('click', function () {
-      resetTabs();
       tabSignup.classList.add('bg-deep-forest', 'text-on-primary', 'shadow-sm');
       tabSignup.classList.remove('text-on-surface-variant');
-      if (signupForm) signupForm.classList.remove('hidden');
-    });
-  }
-
-  if (tabAdmin) {
-    tabAdmin.addEventListener('click', function () {
-      resetTabs();
-      tabAdmin.classList.add('bg-amber-gold', 'text-deep-forest', 'shadow-sm');
-      tabAdmin.classList.remove('text-on-surface-variant');
-      if (adminManualForm) adminManualForm.classList.remove('hidden');
-    });
-  }
-
-  // ─── Manual Admin Passcode Login ───
-  if (adminManualForm) {
-    adminManualForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var pass = document.getElementById('admin-pass-field').value.trim();
-      var validPasscodes = ['sango2026', 'admin', 'sangofiora', 'admin123', 'sango@123'];
-
-      if (validPasscodes.indexOf(pass.toLowerCase()) !== -1) {
-        localStorage.setItem('sango_manual_admin', 'true');
-        showStatus('Master Passcode verified! Redirecting to Admin Studio...', false);
-        setTimeout(function () { location.href = '/admin/'; }, 800);
-      } else {
-        showStatus('Invalid Admin Passcode. Use master passcode: sango2026', true);
-      }
+      tabLogin.classList.remove('bg-deep-forest', 'text-on-primary', 'shadow-sm');
+      tabLogin.classList.add('text-on-surface-variant');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
     });
   }
 
@@ -211,15 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
       var email = document.getElementById('login-email').value.trim();
       var password = document.getElementById('login-password').value;
       if (!email || !password) return;
-
-      // Master passcode shortcut in standard signin
-      var validPasscodes = ['sango2026', 'admin', 'sangofiora'];
-      if (email.toLowerCase() === 'sangofiora2@gmail.com' && validPasscodes.indexOf(password.toLowerCase()) !== -1) {
-        localStorage.setItem('sango_manual_admin', 'true');
-        showStatus('Admin Master Passcode verified! Redirecting...', false);
-        setTimeout(function () { location.href = '/admin/'; }, 800);
-        return;
-      }
 
       showStatus('Signing in...', false);
       window.SangoAuth.signInWithEmail(email, password).then(function (res) {
