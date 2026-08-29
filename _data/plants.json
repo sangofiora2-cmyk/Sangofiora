@@ -1132,7 +1132,7 @@
       "title": "Foliage",
       "heading": "Foliage Plants",
       "tagline": "Lush statement greens for every room",
-      "banner": "/images/products/calathea-orbifolia-120cm.jpg",
+      "banner": "/images/card-foliage.jpg",
       "count": 27
     },
     {
@@ -1140,7 +1140,7 @@
       "title": "Palms",
       "heading": "Palm Trees",
       "tagline": "Resort-style palms, potted & ready",
-      "banner": "/images/products/areca-palm-tree-180cm.jpg",
+      "banner": "/images/card-palms.jpg",
       "count": 13
     },
     {
@@ -1148,7 +1148,7 @@
       "title": "Trees",
       "heading": "Indoor Trees",
       "tagline": "Sculptural trees as natural focal points",
-      "banner": "/images/products/fiddle-leaf-fig-180cm.jpg",
+      "banner": "/images/card-trees.jpg",
       "count": 33
     },
     {
@@ -1156,7 +1156,7 @@
       "title": "Flowering",
       "heading": "Flowering Plants",
       "tagline": "Colour and fragrance, delivered",
-      "banner": "/images/products/rose-plant-white-colour-90cm.jpg",
+      "banner": "/images/card-flowering.jpg",
       "count": 3
     }
   ],
