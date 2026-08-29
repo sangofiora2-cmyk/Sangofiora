@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#F4F3F1"/>
+  <g transform="translate(150, 80)">
+    <ellipse cx="150" cy="420" rx="90" ry="24" fill="#3E2723" opacity="0.2"/>
+    <path d="M100 350 L120 440 L180 440 L200 350 Z" fill="#2E7D32"/>
+    <path d="M95 340 L205 340 L200 355 L100 355 Z" fill="#1B5E20"/>
+    <path d="M150 350 C140 280 145 200 150 150 C155 200 160 280 150 350" stroke="#4E342E" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <!-- Fronds -->
+    <path d="M150 160 Q80 120 30 150 Q90 150 150 170" fill="#2E7D32"/>
+    <path d="M150 160 Q220 120 270 150 Q210 150 150 170" fill="#2E7D32"/>
+    <path d="M150 150 Q100 80 50 90 Q100 120 150 160" fill="#388E3C"/>
+    <path d="M150 150 Q200 80 250 90 Q200 120 150 160" fill="#388E3C"/>
+    <path d="M150 140 Q150 40 150 30 Q160 70 150 140" fill="#4CAF50"/>
+    <path d="M150 150 Q70 170 20 210 Q80 190 150 170" fill="#1B5E20"/>
+    <path d="M150 150 Q230 170 280 210 Q220 190 150 170" fill="#1B5E20"/>
+  </g>
+  <text x="300" y="550" font-family="'Playfair Display', serif" font-size="22" font-weight="bold" fill="#1B5E20" text-anchor="middle">Sago Palm Tree · 70cm</text>
+</svg>
