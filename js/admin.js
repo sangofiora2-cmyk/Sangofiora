@@ -35,13 +35,34 @@
   }
 
   // ─── Auth Gate ───
+  function unlockAdminStudio(name) {
+    var gate = document.getElementById('auth-gate');
+    var main = document.getElementById('admin-main');
+    if (gate) gate.classList.add('hidden');
+    if (main) main.classList.remove('hidden');
+    var nameEl = document.getElementById('admin-user-name');
+    if (nameEl) nameEl.textContent = name || 'Sango Admin (sangofiora2@gmail.com)';
+
+    loadDashboard();
+    loadProducts();
+    loadOrders();
+    loadCoupons();
+  }
+
+  // ─── Auth Gate ───
   function checkAdminAuth() {
     var gate = document.getElementById('auth-gate');
     var main = document.getElementById('admin-main');
     var gateMsg = document.getElementById('auth-gate-msg');
 
+    // 1. Check for manual admin session
+    if (localStorage.getItem('sango_manual_admin') === 'true') {
+      unlockAdminStudio('Sango Admin (sangofiora2@gmail.com)');
+      return;
+    }
+
     if (!window.SangoSupabase) {
-      if (gateMsg) gateMsg.textContent = 'Supabase not configured. Open js/supabase-client.js and add your credentials.';
+      if (gateMsg) gateMsg.textContent = 'Enter your Master Passcode below or configure Supabase in js/supabase-client.js.';
       return;
     }
 
@@ -49,14 +70,11 @@
 
     sb.auth.getSession().then(function (res) {
       if (!res.data || !res.data.session) {
-        if (gateMsg) gateMsg.textContent = 'You need to sign in with an admin account.';
+        if (gateMsg) gateMsg.textContent = 'Enter your Master Passcode or sign in with an admin account.';
         return;
       }
 
       var user = res.data.session.user;
-      document.getElementById('admin-user-name').textContent = user.email;
-
-      // Check if user is admin
       var isSuperAdmin = (user.email && user.email.toLowerCase() === 'sangofiora2@gmail.com');
 
       sb.from('profiles').select('role, full_name').eq('id', user.id).single().then(function (profileRes) {
@@ -64,26 +82,49 @@
         var fullName = (profileRes.data && profileRes.data.full_name) || user.email;
 
         if (role !== 'admin' && !isSuperAdmin) {
-          if (gateMsg) gateMsg.textContent = 'Access denied. Your account (' + user.email + ') is not an admin. Update your role in Supabase Dashboard → profiles table.';
+          if (gateMsg) gateMsg.textContent = 'Access denied. Your account (' + user.email + ') is not an admin.';
           return;
         }
 
         // ✅ Admin verified
-        if (gate) gate.classList.add('hidden');
-        if (main) main.classList.remove('hidden');
-        document.getElementById('admin-user-name').textContent = fullName;
-
-        loadDashboard();
-        loadProducts();
-        loadOrders();
-        loadCoupons();
+        unlockAdminStudio(fullName);
       });
+    });
+  }
+
+  // ─── Direct Passcode Form ───
+  var passcodeForm = document.getElementById('admin-passcode-form');
+  if (passcodeForm) {
+    passcodeForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = document.getElementById('admin-passcode-input');
+      var err = document.getElementById('admin-passcode-error');
+      var val = (input ? input.value : '').trim();
+
+      // Accepted Master Passcodes
+      var validPasscodes = ['sango2026', 'admin', 'sangofiora', 'admin123', 'sango@123'];
+      if (validPasscodes.indexOf(val.toLowerCase()) !== -1) {
+        localStorage.setItem('sango_manual_admin', 'true');
+        if (err) err.classList.add('hidden');
+        toast('Admin Studio Unlocked');
+        unlockAdminStudio('Sango Admin (sangofiora2@gmail.com)');
+      } else {
+        if (err) {
+          err.textContent = 'Invalid passcode. Please use master passcode: sango2026';
+          err.classList.remove('hidden');
+        }
+      }
     });
   }
 
   // ─── Sign Out ───
   document.getElementById('admin-signout').addEventListener('click', function () {
-    if (sb) sb.auth.signOut().then(function () { location.href = '/'; });
+    localStorage.removeItem('sango_manual_admin');
+    if (sb) {
+      sb.auth.signOut().then(function () { location.href = '/'; });
+    } else {
+      location.href = '/';
+    }
   });
 
   // ─── Tab Navigation ───
