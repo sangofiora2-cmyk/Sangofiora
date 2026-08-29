@@ -165,7 +165,8 @@
       }
 
       if (adminLink) {
-        var isAdminUser = (currentProfile && currentProfile.role === 'admin') || (meta.role === 'admin');
+        var isSuperAdmin = (currentUser && currentUser.email && currentUser.email.toLowerCase() === 'sangofiora2@gmail.com');
+        var isAdminUser = (currentProfile && currentProfile.role === 'admin') || (meta.role === 'admin') || isSuperAdmin;
         adminLink.classList.toggle('hidden', !isAdminUser);
       }
     } else {

@@ -57,13 +57,13 @@
       document.getElementById('admin-user-name').textContent = user.email;
 
       // Check if user is admin
-      sb.from('profiles').select('role, full_name').eq('id', user.id).single().then(function (profileRes) {
-        if (profileRes.error || !profileRes.data) {
-          if (gateMsg) gateMsg.textContent = 'Profile not found. Please contact support.';
-          return;
-        }
+      var isSuperAdmin = (user.email && user.email.toLowerCase() === 'sangofiora2@gmail.com');
 
-        if (profileRes.data.role !== 'admin') {
+      sb.from('profiles').select('role, full_name').eq('id', user.id).single().then(function (profileRes) {
+        var role = (profileRes.data && profileRes.data.role) || (isSuperAdmin ? 'admin' : 'customer');
+        var fullName = (profileRes.data && profileRes.data.full_name) || user.email;
+
+        if (role !== 'admin' && !isSuperAdmin) {
           if (gateMsg) gateMsg.textContent = 'Access denied. Your account (' + user.email + ') is not an admin. Update your role in Supabase Dashboard → profiles table.';
           return;
         }
@@ -71,7 +71,7 @@
         // ✅ Admin verified
         if (gate) gate.classList.add('hidden');
         if (main) main.classList.remove('hidden');
-        document.getElementById('admin-user-name').textContent = profileRes.data.full_name || user.email;
+        document.getElementById('admin-user-name').textContent = fullName;
 
         loadDashboard();
         loadProducts();
