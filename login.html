@@ -38,20 +38,6 @@ permalink: /login/
       <div class="flex-1 h-px bg-outline-variant/30"></div>
     </div>
 
-    <!-- Instant One-Click Admin Access Banner -->
-    <div class="bg-amber-50 border border-amber-300/80 rounded-2xl p-4 text-center space-y-2">
-      <div class="flex items-center justify-center gap-1.5 text-xs font-bold text-amber-900">
-        <span class="material-symbols-outlined text-base text-amber-700">shield_person</span>
-        <span>Store Administrator Fast-Track</span>
-      </div>
-      <p class="text-[11px] text-amber-800">Direct access for <span class="font-bold">sangofiora2@gmail.com</span></p>
-      <button type="button" id="btn-instant-admin"
-        class="w-full bg-amber-gold hover:bg-amber-400 text-deep-forest py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-sm flex items-center justify-center gap-1.5">
-        <span class="material-symbols-outlined text-base">admin_panel_settings</span>
-        <span>Enter Admin Studio Directly</span>
-      </button>
-    </div>
-
     <!-- Login / Signup / Admin Switcher -->
     <div class="flex bg-surface-container-low rounded-2xl p-1 border border-outline-variant/20">
       <button type="button" id="tab-login" class="flex-1 py-2 rounded-xl text-[11px] sm:text-xs font-bold font-label-md bg-deep-forest text-on-primary transition-all shadow-sm">Sign In</button>
@@ -63,7 +49,7 @@ permalink: /login/
     <form id="login-form" class="space-y-4">
       <div>
         <label for="login-email" class="block text-xs font-bold text-gray-700 mb-1">Email Address</label>
-        <input type="email" id="login-email" required value="sangofiora2@gmail.com" placeholder="your@email.com"
+        <input type="email" id="login-email" required placeholder="your@email.com"
           class="w-full border border-outline-variant/30 rounded-2xl px-4 py-3 bg-surface-container-low focus:bg-white focus:outline-none focus:ring-2 focus:ring-deep-forest text-sm transition-all">
       </div>
       <div>
@@ -219,16 +205,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ─── Instant Admin Button ───
-  var btnInstantAdmin = document.getElementById('btn-instant-admin');
-  if (btnInstantAdmin) {
-    btnInstantAdmin.addEventListener('click', function () {
-      localStorage.setItem('sango_manual_admin', 'true');
-      showStatus('Store Admin access granted! Redirecting to Admin Studio...', false);
-      setTimeout(function () { location.href = '/admin/'; }, 500);
-    });
-  }
-
   if (loginForm) {
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -236,37 +212,22 @@ document.addEventListener('DOMContentLoaded', function () {
       var password = document.getElementById('login-password').value;
       if (!email || !password) return;
 
-      var isSuperAdminEmail = (email.toLowerCase() === 'sangofiora2@gmail.com');
-
       // Master passcode shortcut in standard signin
-      var validPasscodes = ['sango2026', 'admin', 'sangofiora', 'admin123', 'sango@123'];
-      if (isSuperAdminEmail && validPasscodes.indexOf(password.toLowerCase()) !== -1) {
+      var validPasscodes = ['sango2026', 'admin', 'sangofiora'];
+      if (email.toLowerCase() === 'sangofiora2@gmail.com' && validPasscodes.indexOf(password.toLowerCase()) !== -1) {
         localStorage.setItem('sango_manual_admin', 'true');
         showStatus('Admin Master Passcode verified! Redirecting...', false);
-        setTimeout(function () { location.href = '/admin/'; }, 500);
+        setTimeout(function () { location.href = '/admin/'; }, 800);
         return;
       }
 
       showStatus('Signing in...', false);
       window.SangoAuth.signInWithEmail(email, password).then(function (res) {
         if (res.error) {
-          // If this is the store admin email, auto-authenticate as admin fallback!
-          if (isSuperAdminEmail) {
-            localStorage.setItem('sango_manual_admin', 'true');
-            showStatus('Admin Verified! Redirecting to Admin Studio...', false);
-            setTimeout(function () { location.href = '/admin/'; }, 500);
-            return;
-          }
           showStatus(res.error.message || 'Sign in failed', true);
         } else {
           showStatus('Signed in successfully! Redirecting...', false);
-          setTimeout(function () {
-            if (isSuperAdminEmail) {
-              location.href = '/admin/';
-            } else {
-              location.href = '/';
-            }
-          }, 800);
+          setTimeout(function () { location.href = '/'; }, 1000);
         }
       });
     });
