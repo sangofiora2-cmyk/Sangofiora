@@ -37,12 +37,12 @@
   // ---------- Scroll reveal ----------
   function initScrollAnimations() {
     var targets = document.querySelectorAll('section:not(.hero-section), article:not(.product-card), .animate-on-scroll');
-    targets.forEach(function (item) { item.classList.add('reveal-on-scroll'); });
-
+    
     if (!('IntersectionObserver' in window)) {
       targets.forEach(function (item) { item.classList.add('is-visible'); });
       return;
     }
+
     var observer = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -50,8 +50,18 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-    targets.forEach(function (item) { observer.observe(item); });
+    }, { threshold: 0.05, rootMargin: '50px 0px 50px 0px' });
+
+    targets.forEach(function (item) {
+      // Check if element is already in viewport
+      var rect = item.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        item.classList.add('is-visible');
+      } else {
+        item.classList.add('reveal-on-scroll');
+        observer.observe(item);
+      }
+    });
   }
 
   // ---------- Header shadow on scroll ----------
